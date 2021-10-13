@@ -1473,6 +1473,63 @@ ___TEMPLATE_PARAMETERS___
         "help": "Check this to manually set the host where the sp.js library should be downloaded from."
       }
     ]
+  },
+  {
+    "type": "GROUP",
+    "name": "pluginsConfiguration",
+    "displayName": "Load Plugins",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "pluginsTable",
+        "displayName": "",
+        "simpleTableColumns": [
+          {
+            "defaultValue": "",
+            "displayName": "Plugin URL",
+            "name": "url",
+            "type": "TEXT",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              },
+              {
+                "type": "REGEX",
+                "args": [
+                  "^https?://.+$"
+                ]
+              }
+            ]
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Plugin Configuration",
+            "name": "config",
+            "type": "TEXT",
+            "valueHint": "e.g. snowplowClientHints,ClientHintsPlugin",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              },
+              {
+                "type": "REGEX",
+                "args": [
+                  "^[a-zA-Z]+\\,[a-zA-Z]+$"
+                ],
+                "errorMessage": "Please enter the configuration in the format \u003cstrong\u003estring1,string2\u003c/strong\u003e. For example: \u003cstrong\u003esnowplowClientHints,ClientHintsPlugin\u003c/strong\u003e."
+              }
+            ]
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Additional Configuration (optional)",
+            "name": "additionalConfig",
+            "type": "SELECT"
+          }
+        ]
+      }
+    ]
   }
 ]
 
@@ -1506,6 +1563,26 @@ const pushToTrackerList = trackerName => {
   trackerList.push(trackerName);
   templateStorage.setItem(SNOWPLOW_TRACKER_LIST, trackerList);
 };
+
+// Build the Snowplow global namespace and return the tracker
+const getSp = () => {
+ 
+  const snowplow = copyFromWindow(GLOBALNAME);
+  if (snowplow) {
+    return snowplow;
+  }
+
+  const globalNamespace = createQueue('GlobalSnowplowNamespace');
+  globalNamespace(GLOBALNAME);
+  // Can't use createArgumentsQueue here since the Snowplow tracker library
+  // does not work with GTM's wrapper
+  setInWindow(GLOBALNAME, function() {
+    callInWindow('snowplow.q.push', arguments);
+  });
+  createQueue('snowplow.q');
+  return copyFromWindow(GLOBALNAME);
+};
+const tracker = getSp();
 
 // Helpers
 const fail = msg => {
@@ -1559,31 +1636,22 @@ if (!libUrl) return fail('Missing sp.js library URL');
 if (!trackerName) return fail('Missing tracker name');
 if (!endpoint) return fail('Missing collector endpoint');
 
-// Build the Snowplow global namespace and return the tracker
-const getSp = () => {
- 
-  const snowplow = copyFromWindow(GLOBALNAME);
-  if (snowplow) {
-    return snowplow;
-  }
-
-  const globalNamespace = createQueue('GlobalSnowplowNamespace');
-  globalNamespace(GLOBALNAME);
-  // Can't use createArgumentsQueue here since the Snowplow tracker library
-  // does not work with GTM's wrapper
-  setInWindow(GLOBALNAME, function() {
-    callInWindow('snowplow.q.push', arguments);
-  });
-  createQueue('snowplow.q');
-  return copyFromWindow(GLOBALNAME);
-};
-const tracker = getSp();
-
 // Only initialize the tracker if it hasn't been initialized yet
 if (trackerList.indexOf(trackerName) === -1) {
   tracker('newTracker', trackerName, endpoint, config);
   pushToTrackerList(trackerName);
 }
+
+// Load plugins, if any.
+const plugins = data.pluginsTable || [];
+plugins.forEach(plugin => {
+  tracker(
+    'addPlugin',
+    plugin.url,
+    plugin.config.split(','),
+    plugin.additionalConfig || undefined
+  );      
+}); 
 
 // Helper for creating Enhanced Ecommerce contexts
 const parseEECObject = obj => {
@@ -2305,27 +2373,27 @@ ___TESTS___
 
 scenarios:
 - name: Tracker configuration loaded from parameters, overrides variable
-  code: "mockData.trackerConfigurationVariable = {appId: 'test', type: 'snowplow',\
-    \ platform: 'ios', trackerOptions: {trackerName: 'testName'}};\nmockData.overridingSettings\
-    \ = [{name: 'platform', value: 'web'}];\nmock('copyFromWindow', key => {\n  if\
-    \ (key === mockData.globalName) {\n    return function() {\n      if (arguments[0]\
-    \ === 'newTracker') {\n        assertThat(arguments[1], 'Tracker name not overridden').isEqualTo('testName');\n\
-    \        assertThat(arguments[3], 'Variable config not overridden').isEqualTo({appId:\
-    \ 'test', type: 'snowplow', platform: 'web', trackerOptions: {trackerName: 'testName'}});\n\
-    \      }  \n    };\n  }\n});\n\n// Call runCode to run the template's code.\n\
-    runCode(mockData);\n\n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
+  code: "mockData.trackerName = undefined;\nmockData.trackerConfigurationVariable\
+    \ = {appId: 'test', type: 'snowplow', platform: 'ios', trackerOptions: {trackerName:\
+    \ 'testName'}};\nmockData.overridingSettings = [{name: 'platform', value: 'web'}];\n\
+    mock('copyFromWindow', key => {\n  if (key === mockData.globalName) {\n    return\
+    \ function() {\n      if (arguments[0] === 'newTracker') {\n        assertThat(arguments[1],\
+    \ 'Tracker name not overridden').isEqualTo('testName');\n        assertThat(arguments[3],\
+    \ 'Variable config not overridden').isEqualTo({appId: 'test', type: 'snowplow',\
+    \ platform: 'web', trackerOptions: {trackerName: 'testName'}});\n      }  \n \
+    \   };\n  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
+    \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
 - name: Custom command called with arguments
-  code: "mockData.trackerName = 'test';\nmockData.eventType = 'customCommand';\nmockData.customCommandTable\
-    \ = [{name: 'commandName', args: 'commandValue'}];\n\nmock('copyFromWindow', key\
-    \ => {\n  if (key === mockData.globalName) {\n    return (command, parameters)\
-    \ => {\n      if (command === 'newTracker') return;\n      assertThat(command,\
-    \ 'Invalid command name').isEqualTo('commandName' + ':' + mockData.trackerName);\n\
-    \      assertThat(parameters, 'Invalid parameter sent').isEqualTo('commandValue');\
+  code: "mockData.eventType = 'customCommand';\nmockData.customCommandTable = [{name:\
+    \ 'commandName', args: 'commandValue'}];\n\nmock('copyFromWindow', key => {\n\
+    \  if (key === mockData.globalName) {\n    return (command, parameters) => {\n\
+    \      if (command === 'newTracker') return;\n      assertThat(command, 'Invalid\
+    \ command name').isEqualTo('commandName' + ':' + mockData.trackerName);\n    \
+    \  assertThat(parameters, 'Invalid parameter sent').isEqualTo('commandValue');\
     \ \n    };\n  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
     \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
 - name: Context added to hit
   code: |-
-    mockData.trackerName = 'test';
     mockData.eventType = 'trackPageView';
     mockData.pageViewPageTitle = 'test';
     mockData.pageViewPageContextFunction = () => {};
@@ -2353,7 +2421,6 @@ scenarios:
 - name: Enhanced Ecommerce works with Use Data Layer
   code: |-
     mockData.eventType = 'enhancedEcommerce';
-    mockData.trackerName = 'test';
     mockData.enhancedEcommerceUseDataLayer = true;
     let impression = false;
     let promo = false;
@@ -2391,12 +2458,24 @@ scenarios:
     assertThat(promo, 'Enhanced Ecommerce failed - incorrect promo parsing').isEqualTo(true);
 
     assertApi('gtmOnSuccess').wasCalled();
-setup: "const log = require('logToConsole');\n\nconst mockData = {\n  selfHostedUrl:\
-  \ 'https://abcd.cloudfront.net/sp.js',\n  globalName: 'snowplow',\n  collectorEndpoint:\
-  \ 'test.domain',\n  trackerConfigurationVariable: 'select',\n  overridingSettings:\
-  \ []\n};\n\nlet success, failure;\nmock('injectScript', (url, onsuccess, onfailure)\
-  \ => {\n  success = onsuccess;\n  failure = onfailure;\n  if (url === mockData.selfHostedUrl)\
-  \ {\n    onsuccess();\n  } else {\n    onfailure();\n  }\n  return;\n});\n     "
+- name: Plugin loaded
+  code: "mockData.pluginsTable = [{url: 'https://www.url.com', config: 'somePlugin,PluginSome',\
+    \ additionalConfig: [1,2,3]}];\n\nmock('copyFromWindow', key => {\n  if (key ===\
+    \ mockData.globalName) {\n    return (command, param1, param2, param3) => {\n\
+    \      if (command !== 'addPlugin') return;\n      assertThat(command, 'Invalid\
+    \ command name').isEqualTo('addPlugin');\n      assertThat(param1, 'Invalid parameter\
+    \ for url').isEqualTo('https://www.url.com'); \n      assertThat(param2, 'Invalid\
+    \ parameter for config').isEqualTo(['somePlugin','PluginSome']);\n      assertThat(param3,\
+    \ 'Invalid parameter for additionalConfig').isEqualTo([1,2,3]);      \n    };\n\
+    \  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
+    \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
+setup: "const log = require('logToConsole');\n\nconst mockData = {\n  trackerName:\
+  \ 'test',\n  selfHostedUrl: 'https://abcd.cloudfront.net/sp.js',\n  globalName:\
+  \ 'snowplow',\n  collectorEndpoint: 'test.domain',\n  trackerConfigurationVariable:\
+  \ 'select',\n  overridingSettings: []\n};\n\nlet success, failure;\nmock('injectScript',\
+  \ (url, onsuccess, onfailure) => {\n  success = onsuccess;\n  failure = onfailure;\n\
+  \  if (url === mockData.selfHostedUrl) {\n    onsuccess();\n  } else {\n    onfailure();\n\
+  \  }\n  return;\n});\n     "
 
 
 ___NOTES___
