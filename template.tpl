@@ -1848,9 +1848,8 @@ switch (data.eventType) {
     break;
   case 'trackSelfDescribingEvent':
     if (!paramObj) { 
-      paramObj = data.selfDescribingEventParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for self-describing event hit!');
-      paramObj = makeTableMap(paramObj, 'name', 'value');
+      paramObj = data.selfDescribingEventParams || [];
+      paramObj = paramObj.length ? makeTableMap(paramObj, 'name', 'value') : {};
     }
     // Validate hit
     if (!data.selfDescribingEventSchemaUrl) return fail('No schema URL set for self-describing event.');
