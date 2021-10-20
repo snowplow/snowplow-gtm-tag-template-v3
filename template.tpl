@@ -1525,7 +1525,8 @@ ___TEMPLATE_PARAMETERS___
             "defaultValue": "",
             "displayName": "Additional Configuration (optional)",
             "name": "additionalConfig",
-            "type": "SELECT"
+            "type": "TEXT",
+            "macrosInSelect": true
           }
         ]
       }
