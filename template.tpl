@@ -181,7 +181,7 @@ ___TEMPLATE_PARAMETERS___
             "newRowButtonText": "Add Parameter"
           }
         ],
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#custom-structured-events\"\u003eRead more\u003c/a\u003e about Structured Events.",
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-structured-events\"\u003eRead more\u003c/a\u003e about Structured Events.",
         "displayName": "Structured Event"
       },
       {
@@ -236,7 +236,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Self-describing Event",
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#37-tracking-custom-self-describing-unstructured-events\"\u003eRead more\u003c/a\u003e about Self-describing Events."
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-self-describing-events\"\u003eRead more\u003c/a\u003e about Self-describing Events."
       },
       {
         "enablingConditions": [
@@ -292,7 +292,7 @@ ___TEMPLATE_PARAMETERS___
             "newRowButtonText": "Add Parameter"
           }
         ],
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#34-social-tracking\"\u003eRead more\u003c/a\u003e about Social Interaction tracking.",
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#social-tracking\"\u003eRead more\u003c/a\u003e about Social Interaction tracking.",
         "displayName": "Social Interaction"
       },
       {
@@ -415,7 +415,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#ad-tracking\"\u003eRead more\u003c/a\u003e about Ad Tracking.",
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#ad-tracking-methods\"\u003eRead more\u003c/a\u003e about Ad Tracking.",
         "displayName": "Ad Tracking"
       },
       {
@@ -502,7 +502,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Cart Tracking",
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#311-trackaddtocart-and-trackremovefromcart\"\u003eRead more\u003c/a\u003e about Cart Tracking."
+        "help": "\u003ca href\u003d\"hhttps://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackAddToCart_and_trackRemoveFromCart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
       },
       {
         "type": "GROUP",
@@ -563,7 +563,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Site Search",
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#312-tracksitesearch\"\u003eRead more\u003c/a\u003e about Site Search tracking."
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracksitesearch\"\u003eRead more\u003c/a\u003e about Site Search tracking."
       },
       {
         "type": "GROUP",
@@ -623,7 +623,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#313-tracktiming\"\u003eRead more\u003c/a\u003e about tracking Timing hits.",
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracktiming\"\u003eRead more\u003c/a\u003e about tracking Timing hits.",
         "displayName": "Timing"
       },
       {
@@ -709,7 +709,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#315-consent-tracking\"\u003eRead more\u003c/a\u003e about tracking Consent status."
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#consent-tracking\"\u003eRead more\u003c/a\u003e about tracking Consent status."
       },
       {
         "type": "GROUP",
@@ -768,7 +768,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#trackError\"\u003eRead more\u003c/a\u003e about tracking error events."
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#Error_tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
       }
     ],
     "enablingConditions": [
@@ -1218,7 +1218,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#317-custom-contexts\"\u003eRead more\u003c/a\u003e."
+        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
       },
       {
         "type": "TEXT",
@@ -1227,7 +1227,7 @@ ___TEMPLATE_PARAMETERS___
         "simpleValueType": true,
         "valueUnit": "milliseconds (UNIX timestamp)",
         "valueHint": "Use system time",
-        "help": "Set this to a UNIX timestamp in case you want to override the default timestamp used by Snowplow. \u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/2-Specific-event-tracking-with-the-Javascript-tracker#trueTimestamps\"\u003eRead more\u003c/a\u003e."
+        "help": "Set this to a UNIX timestamp in case you want to override the default timestamp used by Snowplow. \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#setting-the-true-timestamp\"\u003eRead more\u003c/a\u003e."
       }
     ],
     "enablingConditions": [
@@ -1268,7 +1268,7 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "LABEL",
         "name": "enableOverridingLabel",
-        "displayName": "Please follow the \u003ca href\u003d\"https://github.com/snowplow/snowplow/wiki/1-General-parameters-for-the-Javascript-tracker\"\u003eofficial documentation\u003c/a\u003e to ensure the values are passed correctly. Anything you set in this table overrides parameters set in the Snowplow Analytics Settings variable.",
+        "displayName": "Please follow the \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracker-setup/initialization-options/\"\u003eofficial documentation\u003c/a\u003e to ensure the values are passed correctly. Anything you set in this table overrides parameters set in the Snowplow Analytics Settings variable.",
         "enablingConditions": [
           {
             "paramName": "enableOverriding",
