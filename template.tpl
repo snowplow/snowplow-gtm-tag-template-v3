@@ -1356,7 +1356,7 @@ ___TEMPLATE_PARAMETERS___
             "valueValidators": [
               {
                 "args": [
-                  "^(https?://)?[a-z0-9.:]+$"
+                  "^\\S+$"
                 ],
                 "errorMessage": "You must provide a valid hostname.",
                 "type": "REGEX"
@@ -1365,7 +1365,7 @@ ___TEMPLATE_PARAMETERS___
             "simpleValueType": true,
             "name": "collectorEndpoint",
             "type": "TEXT",
-            "valueHint": "e.g. snowplowcollector.cloudfront.net",
+            "valueHint": "e.g. snowplowcollector.mydomain.net",
             "enablingConditions": [
               {
                 "paramName": "overrideCollectorEndpoint",
