@@ -1651,11 +1651,21 @@ if (trackerList.indexOf(trackerName) === -1) {
 // Load plugins, if any.
 const plugins = data.pluginsTable || [];
 plugins.forEach(plugin => {
+  /* Parse and normalize values in additionalConfig
+   * If string with commas, split by comma into an array.
+   * If array, return it as-is.
+   * If something other than an empty string, undefined, or null, cast into array
+   * Otherwise set to undefined.*/
+  const additionalConfig = (plugin.additionalConfig.indexOf(',') > -1 ? plugin.additionalConfig.split(',').map(normalize)
+                         : (getType(plugin.additionalConfig) === 'array' ? plugin.additionalConfig.map(normalize)
+                         : (plugin.additionalConfig !== '' && plugin.additionalConfig !== undefined && plugin.additionalConfig !== null ? [normalize(plugin.additionalConfig)]
+                         : undefined)));
+
   tracker(
     'addPlugin',
     plugin.url,
     plugin.config.split(','),
-    plugin.additionalConfig || undefined
+    additionalConfig
   );      
 }); 
 
