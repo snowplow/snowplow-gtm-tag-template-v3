@@ -1591,6 +1591,14 @@ const fail = msg => {
   return data.gtmOnFailure();
 };
 
+const normalize = val => {
+  if (val === 'null') return null;
+  if (val === 'true') return true;
+  if (val === 'false') return false;
+  if (makeNumber(val)) return makeNumber(val);
+  return val;
+};
+
 // Helper that returns a valid tracker configuration object
 const getTrackerConfiguration = () => {
   // Fail if invalid variable
@@ -1613,10 +1621,7 @@ const getTrackerConfiguration = () => {
   
   // Normalize values
   for (let prop in config) {
-    if (config[prop] === 'null') config[prop] = null;
-    if (config[prop] === 'true') config[prop] = true;
-    if (config[prop] === 'false') config[prop] = false;
-    if (makeNumber(config[prop])) config[prop] = makeNumber(config[prop]);
+    config[prop] = normalize(config[prop]);
   }
   
   return config;
