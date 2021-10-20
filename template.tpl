@@ -2475,14 +2475,14 @@ scenarios:
     assertApi('gtmOnSuccess').wasCalled();
 - name: Plugin loaded
   code: "mockData.pluginsTable = [{url: 'https://www.url.com', config: 'somePlugin,PluginSome',\
-    \ additionalConfig: [1,2,3]}];\n\nmock('copyFromWindow', key => {\n  if (key ===\
-    \ mockData.globalName) {\n    return (command, param1, param2, param3) => {\n\
-    \      if (command !== 'addPlugin') return;\n      assertThat(command, 'Invalid\
-    \ command name').isEqualTo('addPlugin');\n      assertThat(param1, 'Invalid parameter\
-    \ for url').isEqualTo('https://www.url.com'); \n      assertThat(param2, 'Invalid\
-    \ parameter for config').isEqualTo(['somePlugin','PluginSome']);\n      assertThat(param3,\
-    \ 'Invalid parameter for additionalConfig').isEqualTo([1,2,3]);      \n    };\n\
-    \  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
+    \ additionalConfig: 'true,true,true'}];\n\nmock('copyFromWindow', key => {\n \
+    \ if (key === mockData.globalName) {\n    return (command, param1, param2, param3)\
+    \ => {\n      if (command !== 'addPlugin') return;\n      assertThat(command,\
+    \ 'Invalid command name').isEqualTo('addPlugin');\n      assertThat(param1, 'Invalid\
+    \ parameter for url').isEqualTo('https://www.url.com'); \n      assertThat(param2,\
+    \ 'Invalid parameter for config').isEqualTo(['somePlugin','PluginSome']);\n  \
+    \    assertThat(param3, 'Invalid parameter for additionalConfig').isEqualTo([true,true,true]);\
+    \      \n    };\n  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
     \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
 setup: "const log = require('logToConsole');\n\nconst mockData = {\n  trackerName:\
   \ 'test',\n  selfHostedUrl: 'https://abcd.cloudfront.net/sp.js',\n  globalName:\
