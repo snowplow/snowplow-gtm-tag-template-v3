@@ -11,7 +11,7 @@ ___INFO___
 {
   "displayName": "Snowplow Analytics v3",
   "description": "Load, configure, and deploy the Snowplow Analytics JavaScript tracker library (v3).",
-  "__wm": "VGVtcGxhdGUtQXV0aG9yX1Nub3dwbG93QW5hbHl0aWNzLVNpbW8tQWhhdmE\u003d",
+  "__wm": "VGVtcGxhdGUtQXV0aG9yX1Nub3dwbG93QW5hbHl0aWNzVjNUYWctU2ltby1BaGF2YQ==",
   "securityGroups": [],
   "categories": [
     "ANALYTICS"
