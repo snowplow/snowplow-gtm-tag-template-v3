@@ -1,0 +1,7 @@
+homepage: "https://snowplowanalytics.com/"
+documentation: "https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/"
+versions:
+  # Latest version
+  - sha: f38604dcb5cc0c9d12a3786416b2a88424d48eb7
+    changeNotes: Initial release
+  # Older versions
