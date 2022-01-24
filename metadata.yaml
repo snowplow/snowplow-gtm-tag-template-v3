@@ -1,5 +1,5 @@
 homepage: "https://snowplowanalytics.com/"
-documentation: "https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/"
+documentation: "https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide/"
 versions:
   # Latest version
   - sha: f38604dcb5cc0c9d12a3786416b2a88424d48eb7

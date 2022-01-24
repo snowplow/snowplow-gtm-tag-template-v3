@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the Google Tag Manager [custom template](https://developers.google.com/tag-manager/templates) for v3 of the [Snowplow Analytics JavaScript tracker](https://github.com/snowplow/snowplow-javascript-tracker). 
+This is the Google Tag Manager [custom template](https://developers.google.com/tag-manager/templates) for v3 of the [Snowplow Analytics JavaScript tracker](https://github.com/snowplow/snowplow-javascript-tracker).
 
 The **Snowplow Analytics** tag template lets you deploy, implement, and configure the Snowplow Analytics JS tracker on the website using Google Tag Manager.
 
@@ -22,7 +22,7 @@ To **import** the template into Google Tag Manager:
 2. From the template action menu, choose **Import**.
 3. Locate the `template.tpl` file from this repo, and import it into the template editor.
 
-Make the changes you wish. Make sure the unit tests pass (in the **Tests** tab of the editor). Update the tests if necessary. 
+Make the changes you wish. Make sure the unit tests pass (in the **Tests** tab of the editor). Update the tests if necessary.
 
 Once you're done, follow these steps:
 
@@ -40,10 +40,10 @@ After pushing the changes, Google Tag Manager should update the template in the 
 
 ## Find out more
 
-| Tag Template |
-|---------------------------------|
-| ![i1][techdocs-image]           |
-| **[Technical Docs](https://docs.snowplowanalytics.com)** |
+| Tag Template                      |
+|-----------------------------------|
+| [![i1][techdocs-image]][techdocs] |
+| **[Technical Docs][techdocs]**    |
 
 ## Copyright and license
 
@@ -59,3 +59,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 [techdocs-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/techdocs.png
+[techdocs]: https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide/
