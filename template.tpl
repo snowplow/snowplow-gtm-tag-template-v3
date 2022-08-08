@@ -1637,11 +1637,20 @@ const getTrackerConfiguration = () => {
 
   return config;
 };
-const config = getTrackerConfiguration();
 
+// Helper to create commands with tracker identifier.
+// Assumes its argument is string.
+const withTrackerId = (trackerIdentifier) => {
+  return function (commandName) {
+    return commandName + ':' + trackerIdentifier;
+  };
+};
+
+const config = getTrackerConfiguration();
 if (!config) {
   return fail('Could not create a proper tracker configuration object.');
 }
+
 // Access the generic settings
 const libUrl = (data.spLibrary === 'unpkg' ? UNPKG
              : (data.spLibrary === 'jsDelivr' ? JSDELIVR
@@ -1653,6 +1662,8 @@ const endpoint =
 if (!libUrl) return fail('Missing sp.js library URL');
 if (!trackerName) return fail('Missing tracker name');
 if (!endpoint) return fail('Missing collector endpoint');
+
+const mkCommand = withTrackerId(trackerName);
 
 // Only initialize the tracker if it hasn't been initialized yet
 if (trackerList.indexOf(trackerName) === -1) {
@@ -1673,7 +1684,12 @@ plugins.forEach((plugin) => {
                          : (plugin.additionalConfig !== '' && plugin.additionalConfig !== undefined && plugin.additionalConfig !== null ? [normalize(plugin.additionalConfig)]
                          : undefined)));
 
-  tracker('addPlugin', plugin.url, plugin.config.split(','), additionalConfig);
+  tracker(
+    mkCommand('addPlugin'),
+    plugin.url,
+    plugin.config.split(','),
+    additionalConfig
+  );
 });
 
 // Helper for creating Enhanced Ecommerce contexts
@@ -1694,7 +1710,7 @@ const parseEECObject = (obj) => {
   // Add an impression context for each impression in the hit
   if (getType(obj.impressions) === 'array') {
     obj.impressions.forEach((i) => {
-      tracker('addEnhancedEcommerceImpressionContext', {
+      tracker(mkCommand('addEnhancedEcommerceImpressionContext'), {
         id: i.id,
         name: i.name,
         list: i.list,
@@ -1715,7 +1731,7 @@ const parseEECObject = (obj) => {
     getType(obj.promoView.promotions) === 'array'
   ) {
     obj.promoView.promotions.forEach((p) => {
-      tracker('addEnhancedEcommercePromoContext', {
+      tracker(mkCommand('addEnhancedEcommercePromoContext'), {
         id: p.id,
         name: p.name,
         creative: p.creative,
@@ -1730,7 +1746,7 @@ const parseEECObject = (obj) => {
     // Add a product context for every product in the hit
     if (obj[a] && getType(obj[a].products) === 'array') {
       obj[a].products.forEach((p) => {
-        tracker('addEnhancedEcommerceProductContext', {
+        tracker(mkCommand('addEnhancedEcommerceProductContext'), {
           id: p.id,
           name: p.name,
           list: obj[a].actionField ? obj[a].actionField.list : '',
@@ -1748,7 +1764,7 @@ const parseEECObject = (obj) => {
     // Add an action context for the actionField object
     if (obj[a] && obj[a].actionField) {
       const af = obj[a].actionField;
-      tracker('addEnhancedEcommerceActionContext', {
+      tracker(mkCommand('addEnhancedEcommerceActionContext'), {
         id: af.id,
         affiliation: af.affiliation,
         revenue: af.revenue,
@@ -1857,7 +1873,9 @@ switch (data.eventType) {
       const callback = data.pageViewActivityCallback !== 'no' && getType(data.pageViewActivityCallback) === 'function' ? data.pageViewActivityCallback : null;
       // Call the activity tracking method *before* sending the pageview
       tracker(
-        (callback ? 'enableActivityTrackingCallback:' : 'enableActivityTracking:') + trackerName,
+        mkCommand(
+          callback ? 'enableActivityTrackingCallback' : 'enableActivityTracking'
+        ),
         {
           minimumVisitLength: makeInteger(data.pageViewMinimumVisitLength),
           heartbeatDelay: makeInteger(data.pageViewHeartBeat),
@@ -2084,15 +2102,12 @@ switch (data.eventType) {
     const commands =
       data.customCommandTable && data.customCommandTable.length ? data.customCommandTable : [];
     commands.forEach((c) => {
-      tracker(c.name + ':' + trackerName, c.args);
+      tracker(mkCommand(c.name), c.args);
     });
     break;
 }
 
 if (data.eventType !== 'customCommand') {
-  // Add tracker name to command
-  commandName = commandName + ':' + trackerName;
-
   // Add custom contexts
   if (data.customContexts !== 'no' && getType(data.customContexts) === 'array')
     parameters.context = data.customContexts;
@@ -2102,7 +2117,7 @@ if (data.eventType !== 'customCommand') {
     parameters.timestamp = { type: 'ttm', value: data.trueTimestamp };
 
   // Execute the command
-  tracker(commandName, parameters);
+  tracker(mkCommand(commandName), parameters);
 }
 
 injectScript(libUrl, data.gtmOnSuccess, data.gtmOnFailure, 'splibrary');
@@ -2593,12 +2608,12 @@ scenarios:
         return (command, parameters) => {
           if (command === 'newTracker') return;
           if (
-            command === 'addEnhancedEcommerceImpressionContext' &&
+            command === 'addEnhancedEcommerceImpressionContext:test' &&
             parameters.id === 'impression1'
           )
             impression = true;
           if (
-            command === 'addEnhancedEcommercePromoContext' &&
+            command === 'addEnhancedEcommercePromoContext:test' &&
             parameters.id === 'promo1'
           )
             promo = true;
@@ -2684,5 +2699,3 @@ setup: |-
 ___NOTES___
 
 Created on 16/08/2019, 09:46:49
-
-
