@@ -1555,7 +1555,7 @@ const templateStorage = require('templateStorage');
 const UNPKG =
   'https://unpkg.com/browse/@snowplow/javascript-tracker@' +
   data.version +
-  'latest/dist/sp.js';
+  '/dist/sp.js';
 const JSDELIVR =
   'https://cdn.jsdelivr.net/npm/@snowplow/javascript-tracker@' +
   data.version +
