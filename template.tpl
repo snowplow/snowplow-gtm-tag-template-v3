@@ -1389,10 +1389,11 @@ ___TEMPLATE_PARAMETERS___
             "type": "GROUP",
             "subParams": [
               {
-                "type": "RADIO",
+                "type": "SELECT",
                 "name": "spLibrary",
-                "displayName": "JavaScript Library Host",
-                "radioItems": [
+                "displayName": "Snowplow JavaScript Tracker Library",
+                "macrosInSelect": false,
+                "selectItems": [
                   {
                     "value": "jsDelivr",
                     "displayValue": "jsDelivr"
@@ -1403,30 +1404,42 @@ ___TEMPLATE_PARAMETERS___
                   },
                   {
                     "value": "selfHosted",
-                    "displayValue": "Self-hosted",
-                    "subParams": [
-                      {
-                        "help": "Add the URL where your self-hosted Snowplow JavaScript library can be downloaded from. If this location is not in AWS S3 (via Cloudfront) or GCP Storage, remember to update \u003ca href\u003d\"https://www.simoahava.com/analytics/custom-templates-guide-for-google-tag-manager/#injects-scripts\"\u003e\u003cstrong\u003etemplate permissions\u003c/strong\u003e\u003c/a\u003e to allow script injection requests to this URL.",
-                        "valueValidators": [
-                          {
-                            "args": [
-                              "^https://.*"
-                            ],
-                            "type": "REGEX"
-                          }
-                        ],
-                        "displayName": "Self-hosted Library URL",
-                        "simpleValueType": true,
-                        "name": "selfHostedUrl",
-                        "type": "TEXT",
-                        "valueHint": "https://123.cloudfront.net/sp.js"
-                      }
-                    ]
+                    "displayValue": "Self-hosted"
+                  },
+                  {
+                    "value": "doNotLoad",
+                    "displayValue": "Do not load library"
                   }
                 ],
                 "simpleValueType": true,
-                "help": "Load the Snowplow JavaScript library (latest version) from a CDN or choose the location where the self-hosted library can be loaded from.",
-                "defaultValue": "selfHosted"
+                "defaultValue": "selfHosted",
+                "help": "Load the Snowplow JavaScript library from a third-party CDN or choose the location where the self-hosted library can be loaded from. `Do not load` can be used when the Tracker Snippet is loaded with another technique such as directly on the page."
+              },
+              {
+                "type": "TEXT",
+                "name": "selfHostedUrl",
+                "displayName": "Self-hosted Library URL",
+                "simpleValueType": true,
+                "valueHint": "https://123.cloudfront.net/sp.js",
+                "enablingConditions": [
+                  {
+                    "paramName": "spLibrary",
+                    "paramValue": "selfHosted",
+                    "type": "EQUALS"
+                  }
+                ],
+                "help": "Add the URL where your self-hosted Snowplow JavaScript library can be downloaded from. If this location is not in AWS S3 (via Cloudfront) or GCP Storage, remember to update \u003ca href\u003d\"https://www.simoahava.com/analytics/custom-templates-guide-for-google-tag-manager/#injects-scripts\"\u003e\u003cstrong\u003etemplate permissions\u003c/strong\u003e\u003c/a\u003e to allow script injection requests to this URL.",
+                "valueValidators": [
+                  {
+                    "type": "NON_EMPTY"
+                  },
+                  {
+                    "type": "REGEX",
+                    "args": [
+                      "^https://.*"
+                    ]
+                  }
+                ]
               },
               {
                 "type": "TEXT",
@@ -1458,7 +1471,7 @@ ___TEMPLATE_PARAMETERS___
                     "errorMessage": "The sp.js library version number must be greater or equal to 3 (e.g. 3.1.5)."
                   }
                 ],
-                "valueHint": "3.1.5"
+                "valueHint": "3.5.0"
               }
             ],
             "enablingConditions": [
@@ -1604,6 +1617,23 @@ const normalize = (val) => {
   return val;
 };
 
+// Helper to decide if/which library to load.
+const decideSpLoadLib = (tagConfig, trackerOptions) => {
+  if (tagConfig.overrideLibraryURL) {
+    const configOptsMap = {
+      jsDelivr: JSDELIVR,
+      unpkg: UNPKG,
+      doNotLoad: 'doNotLoad',
+      selfHosted: tagConfig.selfHostedUrl,
+    };
+
+    return configOptsMap[tagConfig.spLibrary];
+  }
+
+  const libUrl = trackerOptions ? trackerOptions.libUrl : undefined;
+  return libUrl;
+};
+
 // Helper that returns a valid tracker configuration object
 const getTrackerConfiguration = () => {
   // Fail if invalid variable
@@ -1652,14 +1682,12 @@ if (!config) {
 }
 
 // Access the generic settings
-const libUrl = (data.spLibrary === 'unpkg' ? UNPKG
-             : (data.spLibrary === 'jsDelivr' ? JSDELIVR
-             : data.selfHostedUrl)) || config.trackerOptions.libUrl;
+const spLoadLib = decideSpLoadLib(data, config.trackerOptions);
 const trackerName = data.trackerName || config.trackerOptions.trackerName;
 const endpoint =
   data.collectorEndpoint || config.trackerOptions.collectorEndpoint;
 
-if (!libUrl) return fail('Missing sp.js library URL');
+if (!spLoadLib) return fail('Missing sp.js library URL');
 if (!trackerName) return fail('Missing tracker name');
 if (!endpoint) return fail('Missing collector endpoint');
 
@@ -2120,7 +2148,11 @@ if (data.eventType !== 'customCommand') {
   tracker(mkCommand(commandName), parameters);
 }
 
-injectScript(libUrl, data.gtmOnSuccess, data.gtmOnFailure, 'splibrary');
+if (spLoadLib !== 'doNotLoad') {
+  injectScript(spLoadLib, data.gtmOnSuccess, data.gtmOnFailure, 'splibrary');
+} else {
+  data.gtmOnSuccess();
+}
 
 
 ___WEB_PERMISSIONS___
@@ -2671,11 +2703,26 @@ scenarios:
 
     // Verify that the tag finished successfully.
     assertApi('gtmOnSuccess').wasCalled();
+- name: No load lib
+  code: |
+    mockData.overrideLibraryURL = false;
+    mockData.spLibrary = undefined;
+    mockData.version = undefined;
+    mockData.selfHostingUrl = undefined;
+    mockData.trackerConfigurationVariable = {
+      type: 'snowplow',
+      trackerOptions: { libUrl: 'doNotLoad' },
+    };
+
+    runCode(mockData);
+    assertApi('injectScript').wasNotCalled();
 setup: |-
   const log = require('logToConsole');
 
   const mockData = {
     trackerName: 'test',
+    overrideLibraryURL: true,
+    spLibrary: 'selfHosted',
     selfHostedUrl: 'https://abcd.cloudfront.net/sp.js',
     globalName: 'snowplow',
     collectorEndpoint: 'test.domain',
