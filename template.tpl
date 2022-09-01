@@ -502,7 +502,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Cart Tracking",
-        "help": "\u003ca href\u003d\"hhttps://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackAddToCart_and_trackRemoveFromCart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackaddtocartandtrackremovefromcart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
       },
       {
         "type": "GROUP",
@@ -768,7 +768,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#Error_tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
+        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#error-tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
       }
     ],
     "enablingConditions": [
