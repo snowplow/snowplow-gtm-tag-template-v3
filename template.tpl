@@ -9,8 +9,8 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "Snowplow Analytics v3",
-  "description": "Load, configure, and deploy the Snowplow Analytics JavaScript tracker library (v3).",
+  "displayName": "Snowplow v3",
+  "description": "Load, configure, and deploy the Snowplow JavaScript tracker library (v3).",
   "__wm": "VGVtcGxhdGUtQXV0aG9yX1Nub3dwbG93QW5hbHl0aWNzVjNUYWctU2ltby1BaGF2YQ\u003d\u003d",
   "securityGroups": [],
   "categories": [
@@ -181,7 +181,7 @@ ___TEMPLATE_PARAMETERS___
             "newRowButtonText": "Add Parameter"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-structured-events\"\u003eRead more\u003c/a\u003e about Structured Events.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-structured-events\"\u003eRead more\u003c/a\u003e about Structured Events.",
         "displayName": "Structured Event"
       },
       {
@@ -236,7 +236,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Self-describing Event",
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-self-describing-events\"\u003eRead more\u003c/a\u003e about Self-describing Events."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-self-describing-events\"\u003eRead more\u003c/a\u003e about Self-describing Events."
       },
       {
         "enablingConditions": [
@@ -292,7 +292,7 @@ ___TEMPLATE_PARAMETERS___
             "newRowButtonText": "Add Parameter"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#social-tracking\"\u003eRead more\u003c/a\u003e about Social Interaction tracking.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#social-tracking\"\u003eRead more\u003c/a\u003e about Social Interaction tracking.",
         "displayName": "Social Interaction"
       },
       {
@@ -415,7 +415,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#ad-tracking-methods\"\u003eRead more\u003c/a\u003e about Ad Tracking.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#ad-tracking-methods\"\u003eRead more\u003c/a\u003e about Ad Tracking.",
         "displayName": "Ad Tracking"
       },
       {
@@ -502,7 +502,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Cart Tracking",
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackaddtocartandtrackremovefromcart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackaddtocartandtrackremovefromcart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
       },
       {
         "type": "GROUP",
@@ -563,7 +563,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Site Search",
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracksitesearch\"\u003eRead more\u003c/a\u003e about Site Search tracking."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracksitesearch\"\u003eRead more\u003c/a\u003e about Site Search tracking."
       },
       {
         "type": "GROUP",
@@ -623,7 +623,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracktiming\"\u003eRead more\u003c/a\u003e about tracking Timing hits.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracktiming\"\u003eRead more\u003c/a\u003e about tracking Timing hits.",
         "displayName": "Timing"
       },
       {
@@ -709,7 +709,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#consent-tracking\"\u003eRead more\u003c/a\u003e about tracking Consent status."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#consent-tracking\"\u003eRead more\u003c/a\u003e about tracking Consent status."
       },
       {
         "type": "GROUP",
@@ -768,7 +768,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#error-tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#error-tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
       }
     ],
     "enablingConditions": [
@@ -1218,7 +1218,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
+        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
       },
       {
         "type": "TEXT",
@@ -1227,7 +1227,7 @@ ___TEMPLATE_PARAMETERS___
         "simpleValueType": true,
         "valueUnit": "milliseconds (UNIX timestamp)",
         "valueHint": "Use system time",
-        "help": "Set this to a UNIX timestamp in case you want to override the default timestamp used by Snowplow. \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#setting-the-true-timestamp\"\u003eRead more\u003c/a\u003e."
+        "help": "Set this to a UNIX timestamp in case you want to override the default timestamp used by Snowplow. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#setting-the-true-timestamp\"\u003eRead more\u003c/a\u003e."
       }
     ],
     "enablingConditions": [
@@ -1247,17 +1247,17 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "SELECT",
         "name": "trackerConfigurationVariable",
-        "displayName": "Snowplow Analytics Settings",
+        "displayName": "Snowplow Settings",
         "macrosInSelect": true,
         "selectItems": [
           {
             "value": "select",
-            "displayValue": "Select a Snowplow Analytics Settings variable"
+            "displayValue": "Select a Snowplow v3 Settings variable"
           }
         ],
         "simpleValueType": true,
         "defaultValue": "select",
-        "help": "Set to a Google Tag Manager variable of type \"Snowplow Analytics Settings\". This is optional - you can configure the tracker either partly or entirely by the overriding settings option below."
+        "help": "Set to a Google Tag Manager variable of type \"Snowplow v3 Settings\". This is optional - you can configure the tracker either partly or entirely by the overriding settings option below."
       },
       {
         "type": "CHECKBOX",
@@ -1268,7 +1268,7 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "LABEL",
         "name": "enableOverridingLabel",
-        "displayName": "Please follow the \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracker-setup/initialization-options/\"\u003eofficial documentation\u003c/a\u003e to ensure the values are passed correctly. Anything you set in this table overrides parameters set in the Snowplow Analytics Settings variable.",
+        "displayName": "Please follow the \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracker-setup/initialization-options\"\u003eofficial documentation\u003c/a\u003e to ensure the values are passed correctly. Anything you set in this table overrides parameters set in the Snowplow Settings variable.",
         "enablingConditions": [
           {
             "paramName": "enableOverriding",
@@ -1458,7 +1458,7 @@ ___TEMPLATE_PARAMETERS___
                     "type": "EQUALS"
                   }
                 ],
-                "help": "Enter the version of the sp.js library you want to load. You can find more details about library versions \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/third-party-cdn-hosting/\"\u003ehere\u003c/a\u003e.",
+                "help": "Enter the version of the sp.js library you want to load. You can find more details about library versions \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/third-party-cdn-hosting\"\u003ehere\u003c/a\u003e.",
                 "valueValidators": [
                   {
                     "type": "NON_EMPTY"
@@ -1574,7 +1574,7 @@ const JSDELIVR =
   data.version +
   '/dist/sp.min.js';
 const SNOWPLOW_TRACKER_LIST = 'snowplow_tracker_list';
-const ERROR_LOG_PREFIX = '[ERROR GTM / Snowplow Analytics v3] ';
+const ERROR_LOG_PREFIX = '[ERROR GTM / Snowplow v3] ';
 const GLOBALNAME = 'snowplow';
 
 // Create a list of initialized trackers
