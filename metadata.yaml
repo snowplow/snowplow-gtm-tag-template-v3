@@ -1,11 +1,19 @@
-homepage: "https://snowplowanalytics.com/"
-documentation: "https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide/"
+homepage: "https://snowplow.io"
+documentation: "https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide"
 versions:
   # Latest version
+  - sha: 5f1c9752e2e15fb185c5bd8242809266816e9faa
+    changeNotes: |2
+      Switch to snowplow.io domain (#14)
+      Fix help text links (#13)
+      Add option to not inject JavaScript library (#12)
+      Fix unpkg library url (#9)
+      Ensure all Snowplow methods are executed by specified tracker (#7)
+      Format template with prettier (#8)
+  # Older versions
   - sha: 70af2b13dcea07e8b9c0682aa010827e4175ec8f
     changeNotes: |2
       Update Copyright to 2022 (#5)
       Update documentation links (#4)
-  # Older versions
   - sha: f38604dcb5cc0c9d12a3786416b2a88424d48eb7
     changeNotes: Initial release

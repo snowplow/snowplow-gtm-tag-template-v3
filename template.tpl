@@ -9,9 +9,9 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "Snowplow Analytics v3",
-  "description": "Load, configure, and deploy the Snowplow Analytics JavaScript tracker library (v3).",
-  "__wm": "VGVtcGxhdGUtQXV0aG9yX1Nub3dwbG93QW5hbHl0aWNzVjNUYWctU2ltby1BaGF2YQ==",
+  "displayName": "Snowplow v3",
+  "description": "Load, configure, and deploy the Snowplow JavaScript tracker library (v3).",
+  "__wm": "VGVtcGxhdGUtQXV0aG9yX1Nub3dwbG93QW5hbHl0aWNzVjNUYWctU2ltby1BaGF2YQ\u003d\u003d",
   "securityGroups": [],
   "categories": [
     "ANALYTICS"
@@ -181,7 +181,7 @@ ___TEMPLATE_PARAMETERS___
             "newRowButtonText": "Add Parameter"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-structured-events\"\u003eRead more\u003c/a\u003e about Structured Events.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-structured-events\"\u003eRead more\u003c/a\u003e about Structured Events.",
         "displayName": "Structured Event"
       },
       {
@@ -236,7 +236,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Self-describing Event",
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-self-describing-events\"\u003eRead more\u003c/a\u003e about Self-describing Events."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracking-custom-self-describing-events\"\u003eRead more\u003c/a\u003e about Self-describing Events."
       },
       {
         "enablingConditions": [
@@ -292,7 +292,7 @@ ___TEMPLATE_PARAMETERS___
             "newRowButtonText": "Add Parameter"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#social-tracking\"\u003eRead more\u003c/a\u003e about Social Interaction tracking.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#social-tracking\"\u003eRead more\u003c/a\u003e about Social Interaction tracking.",
         "displayName": "Social Interaction"
       },
       {
@@ -415,7 +415,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#ad-tracking-methods\"\u003eRead more\u003c/a\u003e about Ad Tracking.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#ad-tracking-methods\"\u003eRead more\u003c/a\u003e about Ad Tracking.",
         "displayName": "Ad Tracking"
       },
       {
@@ -502,7 +502,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Cart Tracking",
-        "help": "\u003ca href\u003d\"hhttps://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackAddToCart_and_trackRemoveFromCart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#trackaddtocartandtrackremovefromcart\"\u003eRead more\u003c/a\u003e about Ecommerce Tracking."
       },
       {
         "type": "GROUP",
@@ -563,7 +563,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "displayName": "Site Search",
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracksitesearch\"\u003eRead more\u003c/a\u003e about Site Search tracking."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracksitesearch\"\u003eRead more\u003c/a\u003e about Site Search tracking."
       },
       {
         "type": "GROUP",
@@ -623,7 +623,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracktiming\"\u003eRead more\u003c/a\u003e about tracking Timing hits.",
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#tracktiming\"\u003eRead more\u003c/a\u003e about tracking Timing hits.",
         "displayName": "Timing"
       },
       {
@@ -709,7 +709,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#consent-tracking\"\u003eRead more\u003c/a\u003e about tracking Consent status."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#consent-tracking\"\u003eRead more\u003c/a\u003e about tracking Consent status."
       },
       {
         "type": "GROUP",
@@ -768,7 +768,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "\u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#Error_tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
+        "help": "\u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#error-tracking\"\u003eRead more\u003c/a\u003e about tracking error events."
       }
     ],
     "enablingConditions": [
@@ -1218,7 +1218,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
+        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
       },
       {
         "type": "TEXT",
@@ -1227,7 +1227,7 @@ ___TEMPLATE_PARAMETERS___
         "simpleValueType": true,
         "valueUnit": "milliseconds (UNIX timestamp)",
         "valueHint": "Use system time",
-        "help": "Set this to a UNIX timestamp in case you want to override the default timestamp used by Snowplow. \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#setting-the-true-timestamp\"\u003eRead more\u003c/a\u003e."
+        "help": "Set this to a UNIX timestamp in case you want to override the default timestamp used by Snowplow. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#setting-the-true-timestamp\"\u003eRead more\u003c/a\u003e."
       }
     ],
     "enablingConditions": [
@@ -1247,17 +1247,17 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "SELECT",
         "name": "trackerConfigurationVariable",
-        "displayName": "Snowplow Analytics Settings",
+        "displayName": "Snowplow Settings",
         "macrosInSelect": true,
         "selectItems": [
           {
             "value": "select",
-            "displayValue": "Select a Snowplow Analytics Settings variable"
+            "displayValue": "Select a Snowplow v3 Settings variable"
           }
         ],
         "simpleValueType": true,
         "defaultValue": "select",
-        "help": "Set to a Google Tag Manager variable of type \"Snowplow Analytics Settings\". This is optional - you can configure the tracker either partly or entirely by the overriding settings option below."
+        "help": "Set to a Google Tag Manager variable of type \"Snowplow v3 Settings\". This is optional - you can configure the tracker either partly or entirely by the overriding settings option below."
       },
       {
         "type": "CHECKBOX",
@@ -1268,7 +1268,7 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "LABEL",
         "name": "enableOverridingLabel",
-        "displayName": "Please follow the \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracker-setup/initialization-options/\"\u003eofficial documentation\u003c/a\u003e to ensure the values are passed correctly. Anything you set in this table overrides parameters set in the Snowplow Analytics Settings variable.",
+        "displayName": "Please follow the \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracker-setup/initialization-options\"\u003eofficial documentation\u003c/a\u003e to ensure the values are passed correctly. Anything you set in this table overrides parameters set in the Snowplow Settings variable.",
         "enablingConditions": [
           {
             "paramName": "enableOverriding",
@@ -1389,10 +1389,11 @@ ___TEMPLATE_PARAMETERS___
             "type": "GROUP",
             "subParams": [
               {
-                "type": "RADIO",
+                "type": "SELECT",
                 "name": "spLibrary",
-                "displayName": "JavaScript Library Host",
-                "radioItems": [
+                "displayName": "Snowplow JavaScript Tracker Library",
+                "macrosInSelect": false,
+                "selectItems": [
                   {
                     "value": "jsDelivr",
                     "displayValue": "jsDelivr"
@@ -1403,30 +1404,42 @@ ___TEMPLATE_PARAMETERS___
                   },
                   {
                     "value": "selfHosted",
-                    "displayValue": "Self-hosted",
-                    "subParams": [
-                      {
-                        "help": "Add the URL where your self-hosted Snowplow JavaScript library can be downloaded from. If this location is not in AWS S3 (via Cloudfront) or GCP Storage, remember to update \u003ca href\u003d\"https://www.simoahava.com/analytics/custom-templates-guide-for-google-tag-manager/#injects-scripts\"\u003e\u003cstrong\u003etemplate permissions\u003c/strong\u003e\u003c/a\u003e to allow script injection requests to this URL.",
-                        "valueValidators": [
-                          {
-                            "args": [
-                              "^https://.*"
-                            ],
-                            "type": "REGEX"
-                          }
-                        ],
-                        "displayName": "Self-hosted Library URL",
-                        "simpleValueType": true,
-                        "name": "selfHostedUrl",
-                        "type": "TEXT",
-                        "valueHint": "https://123.cloudfront.net/sp.js"
-                      }
-                    ]
+                    "displayValue": "Self-hosted"
+                  },
+                  {
+                    "value": "doNotLoad",
+                    "displayValue": "Do not load library"
                   }
                 ],
                 "simpleValueType": true,
-                "help": "Load the Snowplow JavaScript library (latest version) from a CDN or choose the location where the self-hosted library can be loaded from.",
-                "defaultValue": "selfHosted"
+                "defaultValue": "selfHosted",
+                "help": "Load the Snowplow JavaScript library from a third-party CDN or choose the location where the self-hosted library can be loaded from. `Do not load` can be used when the Tracker Snippet is loaded with another technique such as directly on the page."
+              },
+              {
+                "type": "TEXT",
+                "name": "selfHostedUrl",
+                "displayName": "Self-hosted Library URL",
+                "simpleValueType": true,
+                "valueHint": "https://123.cloudfront.net/sp.js",
+                "enablingConditions": [
+                  {
+                    "paramName": "spLibrary",
+                    "paramValue": "selfHosted",
+                    "type": "EQUALS"
+                  }
+                ],
+                "help": "Add the URL where your self-hosted Snowplow JavaScript library can be downloaded from. If this location is not in AWS S3 (via Cloudfront) or GCP Storage, remember to update \u003ca href\u003d\"https://www.simoahava.com/analytics/custom-templates-guide-for-google-tag-manager/#injects-scripts\"\u003e\u003cstrong\u003etemplate permissions\u003c/strong\u003e\u003c/a\u003e to allow script injection requests to this URL.",
+                "valueValidators": [
+                  {
+                    "type": "NON_EMPTY"
+                  },
+                  {
+                    "type": "REGEX",
+                    "args": [
+                      "^https://.*"
+                    ]
+                  }
+                ]
               },
               {
                 "type": "TEXT",
@@ -1445,7 +1458,7 @@ ___TEMPLATE_PARAMETERS___
                     "type": "EQUALS"
                   }
                 ],
-                "help": "Enter the version of the sp.js library you want to load. You can find more details about library versions \u003ca href\u003d\"https://docs.snowplowanalytics.com/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/third-party-cdn-hosting/\"\u003ehere\u003c/a\u003e.",
+                "help": "Enter the version of the sp.js library you want to load. You can find more details about library versions \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/third-party-cdn-hosting\"\u003ehere\u003c/a\u003e.",
                 "valueValidators": [
                   {
                     "type": "NON_EMPTY"
@@ -1458,7 +1471,7 @@ ___TEMPLATE_PARAMETERS___
                     "errorMessage": "The sp.js library version number must be greater or equal to 3 (e.g. 3.1.5)."
                   }
                 ],
-                "valueHint": "3.1.5"
+                "valueHint": "3.5.0"
               }
             ],
             "enablingConditions": [
@@ -1552,22 +1565,27 @@ const setInWindow = require('setInWindow');
 const templateStorage = require('templateStorage');
 
 // Constants
-const UNPKG = 'https://unpkg.com/browse/@snowplow/javascript-tracker@' + data.version + 'latest/dist/sp.js';
-const JSDELIVR = 'https://cdn.jsdelivr.net/npm/@snowplow/javascript-tracker@' + data.version + '/dist/sp.min.js';
+const UNPKG =
+  'https://unpkg.com/browse/@snowplow/javascript-tracker@' +
+  data.version +
+  '/dist/sp.js';
+const JSDELIVR =
+  'https://cdn.jsdelivr.net/npm/@snowplow/javascript-tracker@' +
+  data.version +
+  '/dist/sp.min.js';
 const SNOWPLOW_TRACKER_LIST = 'snowplow_tracker_list';
-const ERROR_LOG_PREFIX = '[ERROR GTM / Snowplow Analytics v3] ';
+const ERROR_LOG_PREFIX = '[ERROR GTM / Snowplow v3] ';
 const GLOBALNAME = 'snowplow';
 
 // Create a list of initialized trackers
 const trackerList = templateStorage.getItem(SNOWPLOW_TRACKER_LIST) || [];
-const pushToTrackerList = trackerName => {
+const pushToTrackerList = (trackerName) => {
   trackerList.push(trackerName);
   templateStorage.setItem(SNOWPLOW_TRACKER_LIST, trackerList);
 };
 
 // Build the Snowplow global namespace and return the tracker
 const getSp = () => {
- 
   const snowplow = copyFromWindow(GLOBALNAME);
   if (snowplow) {
     return snowplow;
@@ -1577,7 +1595,7 @@ const getSp = () => {
   globalNamespace(GLOBALNAME);
   // Can't use createArgumentsQueue here since the Snowplow tracker library
   // does not work with GTM's wrapper
-  setInWindow(GLOBALNAME, function() {
+  setInWindow(GLOBALNAME, function () {
     callInWindow('snowplow.q.push', arguments);
   });
   createQueue('snowplow.q');
@@ -1586,12 +1604,12 @@ const getSp = () => {
 const tracker = getSp();
 
 // Helpers
-const fail = msg => {
+const fail = (msg) => {
   log(ERROR_LOG_PREFIX + msg);
   return data.gtmOnFailure();
 };
 
-const normalize = val => {
+const normalize = (val) => {
   if (val === 'null') return null;
   if (val === 'true') return true;
   if (val === 'false') return false;
@@ -1599,48 +1617,81 @@ const normalize = val => {
   return val;
 };
 
+// Helper to decide if/which library to load.
+const decideSpLoadLib = (tagConfig, trackerOptions) => {
+  if (tagConfig.overrideLibraryURL) {
+    const configOptsMap = {
+      jsDelivr: JSDELIVR,
+      unpkg: UNPKG,
+      doNotLoad: 'doNotLoad',
+      selfHosted: tagConfig.selfHostedUrl,
+    };
+
+    return configOptsMap[tagConfig.spLibrary];
+  }
+
+  const libUrl = trackerOptions ? trackerOptions.libUrl : undefined;
+  return libUrl;
+};
+
 // Helper that returns a valid tracker configuration object
 const getTrackerConfiguration = () => {
   // Fail if invalid variable
-  if (data.trackerConfigurationVariable !== 'select' && data.trackerConfigurationVariable.type !== 'snowplow') {
+  if (
+    data.trackerConfigurationVariable !== 'select' &&
+    data.trackerConfigurationVariable.type !== 'snowplow'
+  ) {
     return false;
   }
   // Return if no parameters added
-  if (data.trackerConfigurationVariable === 'select' && (!data.overridingSettings || !data.overridingSettings.length)) {
+  if (
+    data.trackerConfigurationVariable === 'select' &&
+    (!data.overridingSettings || !data.overridingSettings.length)
+  ) {
     return {};
   }
-  
+
   // Set the configuration to the variable return object
   const config = data.trackerConfigurationVariable !== 'select' ? data.trackerConfigurationVariable : {};
-  
+
   // Override individual fields in the config object from tag settings
   const overrideSettings = data.overridingSettings && data.overridingSettings.length ? makeTableMap(data.overridingSettings, 'name', 'value') : {};
   for (let prop in overrideSettings) {
     config[prop] = overrideSettings[prop];
   }
-  
+
   // Normalize values
   for (let prop in config) {
     config[prop] = normalize(config[prop]);
   }
-  
+
   return config;
 };
-const config = getTrackerConfiguration();
 
+// Helper to create commands with tracker identifier.
+// Assumes its argument is string.
+const withTrackerId = (trackerIdentifier) => {
+  return function (commandName) {
+    return commandName + ':' + trackerIdentifier;
+  };
+};
+
+const config = getTrackerConfiguration();
 if (!config) {
   return fail('Could not create a proper tracker configuration object.');
 }
-// Access the generic settings
-const libUrl = (data.spLibrary === 'unpkg' ? UNPKG
-             : (data.spLibrary === 'jsDelivr' ? JSDELIVR
-             : data.selfHostedUrl)) || config.trackerOptions.libUrl;
-const trackerName = data.trackerName || config.trackerOptions.trackerName;
-const endpoint = data.collectorEndpoint || config.trackerOptions.collectorEndpoint;
 
-if (!libUrl) return fail('Missing sp.js library URL');
+// Access the generic settings
+const spLoadLib = decideSpLoadLib(data, config.trackerOptions);
+const trackerName = data.trackerName || config.trackerOptions.trackerName;
+const endpoint =
+  data.collectorEndpoint || config.trackerOptions.collectorEndpoint;
+
+if (!spLoadLib) return fail('Missing sp.js library URL');
 if (!trackerName) return fail('Missing tracker name');
 if (!endpoint) return fail('Missing collector endpoint');
+
+const mkCommand = withTrackerId(trackerName);
 
 // Only initialize the tracker if it hasn't been initialized yet
 if (trackerList.indexOf(trackerName) === -1) {
@@ -1650,7 +1701,7 @@ if (trackerList.indexOf(trackerName) === -1) {
 
 // Load plugins, if any.
 const plugins = data.pluginsTable || [];
-plugins.forEach(plugin => {
+plugins.forEach((plugin) => {
   /* Parse and normalize values in additionalConfig
    * If string with commas, split by comma into an array.
    * If array, return it as-is.
@@ -1662,79 +1713,97 @@ plugins.forEach(plugin => {
                          : undefined)));
 
   tracker(
-    'addPlugin',
+    mkCommand('addPlugin'),
     plugin.url,
     plugin.config.split(','),
     additionalConfig
-  );      
-}); 
+  );
+});
 
 // Helper for creating Enhanced Ecommerce contexts
-const parseEECObject = obj => {
+const parseEECObject = (obj) => {
   // Valid actions the script will look for in the dataLayer
-  const actions = ['promoClick', 'click', 'detail', 'add', 'remove', 'checkout', 'checkout_option', 'purchase', 'refund'];
+  const actions = [
+    'promoClick',
+    'click',
+    'detail',
+    'add',
+    'remove',
+    'checkout',
+    'checkout_option',
+    'purchase',
+    'refund',
+  ];
   let action;
   // Add an impression context for each impression in the hit
   if (getType(obj.impressions) === 'array') {
-    obj.impressions.forEach(i => {
-      tracker('addEnhancedEcommerceImpressionContext', 
-              {id: i.id,
-              name: i.name,
-              list: i.list,
-              brand: i.brand,
-              category: i.category,
-              variant: i.variant,
-              position: i.position,
-              price: i.price,
-              currency: obj.currencyCode});
+    obj.impressions.forEach((i) => {
+      tracker(mkCommand('addEnhancedEcommerceImpressionContext'), {
+        id: i.id,
+        name: i.name,
+        list: i.list,
+        brand: i.brand,
+        category: i.category,
+        variant: i.variant,
+        position: i.position,
+        price: i.price,
+        currency: obj.currencyCode,
+      });
     });
     action = 'view';
   }
   // Track promotion views for each promotion in the hit, as long as there isn't a promoClick in the object
-  if (obj.promoView && !obj.promoClick && getType(obj.promoView.promotions) === 'array') {
-    obj.promoView.promotions.forEach(p => {
-      tracker('addEnhancedEcommercePromoContext',
-              {id: p.id,
-               name: p.name,
-               creative: p.creative,
-               position: p.position,
-               currency: obj.currencyCode});
+  if (
+    obj.promoView &&
+    !obj.promoClick &&
+    getType(obj.promoView.promotions) === 'array'
+  ) {
+    obj.promoView.promotions.forEach((p) => {
+      tracker(mkCommand('addEnhancedEcommercePromoContext'), {
+        id: p.id,
+        name: p.name,
+        creative: p.creative,
+        position: p.position,
+        currency: obj.currencyCode,
+      });
     });
     action = 'view';
   }
   // Go through all the actions and stop at the first one that matches
-  actions.some(a => {
+  actions.some((a) => {
     // Add a product context for every product in the hit
     if (obj[a] && getType(obj[a].products) === 'array') {
-      obj[a].products.forEach(p => {
-        tracker('addEnhancedEcommerceProductContext',
-                {id: p.id,
-                 name: p.name,
-                 list: obj[a].actionField ? obj[a].actionField.list : '',
-                 brand: p.brand,
-                 category: p.category,
-                 variant: p.variant,
-                 price: p.price,
-                 quantity: p.quantity,
-                 coupon: p.coupon,
-                 position: p.position,
-                 currency: obj.currencyCode});
+      obj[a].products.forEach((p) => {
+        tracker(mkCommand('addEnhancedEcommerceProductContext'), {
+          id: p.id,
+          name: p.name,
+          list: obj[a].actionField ? obj[a].actionField.list : '',
+          brand: p.brand,
+          category: p.category,
+          variant: p.variant,
+          price: p.price,
+          quantity: p.quantity,
+          coupon: p.coupon,
+          position: p.position,
+          currency: obj.currencyCode,
+        });
       });
     }
     // Add an action context for the actionField object
     if (obj[a] && obj[a].actionField) {
       const af = obj[a].actionField;
-      tracker('addEnhancedEcommerceActionContext',
-              {id: af.id,
-               affiliation: af.affiliation,
-               revenue: af.revenue,
-               tax: af.tax,
-               shipping: af.shipping,
-               coupon: af.coupon,
-               list: af.list,
-               step: af.step,
-               option: af.option,
-               currency: obj.currencyCode});
+      tracker(mkCommand('addEnhancedEcommerceActionContext'), {
+        id: af.id,
+        affiliation: af.affiliation,
+        revenue: af.revenue,
+        tax: af.tax,
+        shipping: af.shipping,
+        coupon: af.coupon,
+        list: af.list,
+        step: af.step,
+        option: af.option,
+        currency: obj.currencyCode,
+      });
     }
     if (obj[a]) {
       // Map the promoClick to its counterpart in Snowplow
@@ -1752,7 +1821,8 @@ let parameters = {};
 // If using event parameter variable, require the variable to return an object
 let paramObj;
 if (data.paramsFromVariable && data.paramsFromVariable !== 'no') {
-  if (getType(data.paramsFromVariable) !== 'object') return fail('Parameter variable must return an object.');
+  if (getType(data.paramsFromVariable) !== 'object')
+    return fail('Parameter variable must return an object.');
   paramObj = data.paramsFromVariable;
 }
 
@@ -1761,54 +1831,68 @@ switch (data.eventType) {
     if (!paramObj) {
       // If parameters are set manually
       paramObj = data.adTrackingParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for ad tracking hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for ad tracking hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
-    if (paramObj.costModel && ['cpa','cpc','cpm'].indexOf(paramObj.costModel) === -1) return fail('Invalid value for "costModel" in ad tracking hit.');
-    if (data.adTrackingType === 'trackAdClick' && !paramObj.targetUrl) return fail('Missing "targetUrl" in ad tracking hit.');
-    
+    if (
+      paramObj.costModel &&
+      ['cpa', 'cpc', 'cpm'].indexOf(paramObj.costModel) === -1
+    )
+      return fail('Invalid value for "costModel" in ad tracking hit.');
+    if (data.adTrackingType === 'trackAdClick' && !paramObj.targetUrl)
+      return fail('Missing "targetUrl" in ad tracking hit.');
+
     commandName = data.adTrackingType;
     parameters = paramObj;
     break;
   case 'cartTracking':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.cartTrackingParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for cart tracking hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for cart tracking hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
     if (!paramObj.sku) return fail('Missing "sku" from cart tracking hit.');
-    if (!paramObj.unitPrice) return fail('Missing "unitPrice" from cart tracking hit.');
-    if (!paramObj.quantity) return fail('Missing "quantity" from cart tracking hit.');
-    
+    if (!paramObj.unitPrice)
+      return fail('Missing "unitPrice" from cart tracking hit.');
+    if (!paramObj.quantity)
+      return fail('Missing "quantity" from cart tracking hit.');
+
     commandName = data.cartTrackingType;
     parameters = paramObj;
     break;
   case 'trackError':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.errorTrackingParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for error tracking hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for error tracking hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
-    if (!paramObj.message) return fail('Missing "message" from error tracking hit.');
-    
+    if (!paramObj.message)
+      return fail('Missing "message" from error tracking hit.');
+
     commandName = data.eventType;
     break;
   case 'trackSiteSearch':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.siteSearchParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for site search hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for site search hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
     if (!paramObj.terms) return fail('Missing "terms" from site search hit.');
-    if (paramObj.filters && getType(paramObj.filters) !== 'object') return fail('"filters" in the site search hit should be an object.');
+    if (paramObj.filters && getType(paramObj.filters) !== 'object')
+      return fail('"filters" in the site search hit should be an object.');
 
     // Normalize terms
-    if (getType(paramObj.terms) === 'string') paramObj.terms = paramObj.terms.split(',').map(t => t.trim());
-    
+    if (getType(paramObj.terms) === 'string')
+      paramObj.terms = paramObj.terms.split(',').map((t) => t.trim());
+
     commandName = data.eventType;
     parameters = paramObj;
     break;
@@ -1817,16 +1901,21 @@ switch (data.eventType) {
       const callback = data.pageViewActivityCallback !== 'no' && getType(data.pageViewActivityCallback) === 'function' ? data.pageViewActivityCallback : null;
       // Call the activity tracking method *before* sending the pageview
       tracker(
-        (callback ? 'enableActivityTrackingCallback:' : 'enableActivityTracking:') + trackerName,
+        mkCommand(
+          callback ? 'enableActivityTrackingCallback' : 'enableActivityTracking'
+        ),
         {
           minimumVisitLength: makeInteger(data.pageViewMinimumVisitLength),
           heartbeatDelay: makeInteger(data.pageViewHeartBeat),
-          callback: callback
+          callback: callback,
         }
       );
     }
-    
-    if (data.pageViewPageContextFunction !== 'no' && getType(data.pageViewPageContextFunction) === 'function') {
+
+    if (
+      data.pageViewPageContextFunction !== 'no' &&
+      getType(data.pageViewPageContextFunction) === 'function'
+    ) {
       parameters.contextCallback = data.pageViewPageContextFunction;
     }
 
@@ -1834,44 +1923,51 @@ switch (data.eventType) {
     parameters.title = data.pageViewPageTitle;
     break;
   case 'trackStructEvent':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.structEventParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for structured event hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for structured event hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
-    if (!paramObj.category) return fail('Missing "category" from structured event hit.');
-    if (!paramObj.action) return fail('Missing "action" from structured event hit.');
-    
+    if (!paramObj.category)
+      return fail('Missing "category" from structured event hit.');
+    if (!paramObj.action)
+      return fail('Missing "action" from structured event hit.');
+
     commandName = data.eventType;
     parameters = paramObj;
     break;
   case 'trackSelfDescribingEvent':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.selfDescribingEventParams || [];
       paramObj = paramObj.length ? makeTableMap(paramObj, 'name', 'value') : {};
     }
     // Validate hit
-    if (!data.selfDescribingEventSchemaUrl) return fail('No schema URL set for self-describing event.');
-    
+    if (!data.selfDescribingEventSchemaUrl)
+      return fail('No schema URL set for self-describing event.');
+
     commandName = data.eventType;
     parameters = {
       event: {
         schema: data.selfDescribingEventSchemaUrl,
-        data: paramObj
-      }
+        data: paramObj,
+      },
     };
     break;
   case 'trackSocialInteraction':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.socialInteractionParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for social interaction hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for social interaction hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
-    if (!paramObj.action) return fail('Missing "action" from social interaction hit.');
-    if (!paramObj.network) return fail('Missing "network" from social interaction hit.');
-    
+    if (!paramObj.action)
+      return fail('Missing "action" from social interaction hit.');
+    if (!paramObj.network)
+      return fail('Missing "network" from social interaction hit.');
+
     commandName = data.eventType;
     parameters = paramObj;
     break;
@@ -1880,70 +1976,86 @@ switch (data.eventType) {
       const filter = {};
       // Use allowlist if available, denylist if not
       if (data.linkTrackingAllowlist || data.linkTrackingDenylist) {
-        let filterValue = data.linkTrackingAllowlist || data.linkTrackingDenylist;
+        let filterValue =
+          data.linkTrackingAllowlist || data.linkTrackingDenylist;
         // Convert comma-separated string to an array
-        filterValue = filterValue && getType(filterValue) === 'string' ? filterValue.split(',').map(f => f.trim()) : null;
-        if (filterValue) filter[data.linkTrackingAllowlist ? 'allowlist' : 'denylist'] = filterValue;
+        filterValue =
+          filterValue && getType(filterValue) === 'string' ? filterValue.split(',').map((f) => f.trim()) : null;
+        if (filterValue)
+          filter[data.linkTrackingAllowlist ? 'allowlist' : 'denylist'] =
+            filterValue;
       }
-      
+
       commandName = data.linkTrackingType;
       parameters = {
         configuration: {
           options: filter,
           pseudoClicks: !!data.linkTrackingPseudoClicks,
-          trackContent: !!data.linkTrackingInnerHTML
-        }
+          trackContent: !!data.linkTrackingInnerHTML,
+        },
       };
-    }
-    else {
-      const params = data.linkTrackingParameters && data.linkTrackingParameters.length ? makeTableMap(data.linkTrackingParameters, 'name', 'value') : null;
+    } else {
+      const params =
+        data.linkTrackingParameters && data.linkTrackingParameters.length ? makeTableMap(data.linkTrackingParameters, 'name', 'value') : null;
       let classes;
       // Validate hit
-      if (!params) return fail('No parameters passed to link click tracking hit.');
-      if (!params.targetUrl) return fail('Missing "targetUrl" from link click tracking hit.');
+      if (!params)
+        return fail('No parameters passed to link click tracking hit.');
+      if (!params.targetUrl)
+        return fail('Missing "targetUrl" from link click tracking hit.');
       // Normalize elementClasses to array (split and trim if string)
       if (params.elementClasses) {
-        if (getType(params.elementClasses === 'array')) classes = params.elementClasses;
-        if (getType(params.elementClasses === 'string')) classes = params.elementClasses.split(',').map(c => c.trim());
+        if (getType(params.elementClasses === 'array'))
+          classes = params.elementClasses;
+        if (getType(params.elementClasses === 'string'))
+          classes = params.elementClasses.split(',').map((c) => c.trim());
       }
-      
+
       commandName = data.linkTrackingType;
       parameters = {
         targetUrl: params.targetUrl,
         elementId: params.elementId,
         elementClasses: classes,
         elementTarget: params.elementTarget,
-        elementContent: params.elementContent
+        elementContent: params.elementContent,
       };
     }
     break;
   case 'trackConsent':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.consentParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for consent hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for consent hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
-    
+
     parameters = {
       id: paramObj.id,
       version: paramObj.version,
       name: paramObj.name,
       description: paramObj.description,
       all: paramObj.all || false,
-      expiry: paramObj.expiry
+      expiry: paramObj.expiry,
     };
-    
+
     if (data.consentType === 'grant') {
       // Validate hit
       if (!paramObj.id) return fail('Missing "id" from consent grant hit.');
-      if (!paramObj.version) return fail('Missing "version" from consent grant hit.');
-      
+      if (!paramObj.version)
+        return fail('Missing "version" from consent grant hit.');
+
       commandName = 'trackConsentGranted';
       parameters.expiry = paramObj.expiry;
     } else {
       // Validate hit
-      if (!paramObj.all && !paramObj.id && !paramObj.version) return fail('Must have either "id" and "version", or "all" set to true, in consent withdraw hit.');
-      if (!paramObj.all && (!paramObj.id || !paramObj.version)) return fail('Must have both "id" and "version" if "all" false in consent withdraw hit.');
+      if (!paramObj.all && !paramObj.id && !paramObj.version)
+        return fail(
+          'Must have either "id" and "version", or "all" set to true, in consent withdraw hit.'
+        );
+      if (!paramObj.all && (!paramObj.id || !paramObj.version))
+        return fail(
+          'Must have both "id" and "version" if "all" false in consent withdraw hit.'
+        );
 
       commandName = 'trackConsentWithdrawn';
       parameters.all = paramObj.all || false;
@@ -1953,31 +2065,42 @@ switch (data.eventType) {
   case 'formTracking':
     const formConfig = {
       forms: {},
-      fields: {}
+      fields: {},
     };
-    let filterForm = data.formTrackingAllowlistForms || data.formTrackingDenylistForms;
-    let filterField = data.formTrackingAllowlistFields || data.formTrackingDenylistFields;
-    if (getType(filterForm) === 'string') filterForm = filterForm.split(',').map(f => f.trim());
-    if (getType(filterField) === 'string') filterField = filterField.split(',').map(f => f.trim());
-    if (getType(filterForm) === 'array') formConfig.forms[data.formTrackingAllowlistForms ? 'allowlist' : 'denylist'] = filterForm;
-    if (getType(filterField) === 'array') formConfig.fields[data.formTrackingAllowlistFields ? 'allowlist' : 'denylist'] = filterField;
-    
+    let filterForm =
+      data.formTrackingAllowlistForms || data.formTrackingDenylistForms;
+    let filterField =
+      data.formTrackingAllowlistFields || data.formTrackingDenylistFields;
+    if (getType(filterForm) === 'string')
+      filterForm = filterForm.split(',').map((f) => f.trim());
+    if (getType(filterField) === 'string')
+      filterField = filterField.split(',').map((f) => f.trim());
+    if (getType(filterForm) === 'array')
+      formConfig.forms[
+        data.formTrackingAllowlistForms ? 'allowlist' : 'denylist'
+      ] = filterForm;
+    if (getType(filterField) === 'array')
+      formConfig.fields[
+        data.formTrackingAllowlistFields ? 'allowlist' : 'denylist'
+      ] = filterField;
+
     commandName = 'enableFormTracking';
     parameters = {
-      options: formConfig
+      options: formConfig,
     };
     break;
   case 'trackTiming':
-    if (!paramObj) { 
+    if (!paramObj) {
       paramObj = data.timingParams;
-      if (!paramObj || !paramObj.length) return fail('No parameters provided for timing hit!');
+      if (!paramObj || !paramObj.length)
+        return fail('No parameters provided for timing hit!');
       paramObj = makeTableMap(paramObj, 'name', 'value');
     }
     // Validate hit
     if (!paramObj.category) return fail('Missing "category" from timing hit.');
     if (!paramObj.variable) return fail('Missing "variable" from timing hit.');
     if (!paramObj.timing) return fail('Missing "timing" from timing hit.');
-    
+
     commandName = data.eventType;
     parameters = paramObj;
     break;
@@ -1987,44 +2110,49 @@ switch (data.eventType) {
     if (data.enhancedEcommerceUseDataLayer) {
       ecom = copyFromDataLayer('ecommerce', 1);
     } else {
-      ecom = getType(data.enhancedEcommerceVariable) === 'object' ? data.enhancedEcommerceVariable.ecommerce : null;
+      ecom =
+        getType(data.enhancedEcommerceVariable) === 'object' ? data.enhancedEcommerceVariable.ecommerce : null;
     }
     // Validate hit
     if (!ecom) return fail('No valid "ecommerce" object found');
     const action = parseEECObject(ecom);
-    if (action) { 
+    if (action) {
       commandName = 'trackEnhancedEcommerceAction';
       parameters = {
-        action: action
+        action: action,
       };
-    } else { 
-      return fail('Unable to track any valid Enhanced Ecommerce event.'); 
+    } else {
+      return fail('Unable to track any valid Enhanced Ecommerce event.');
     }
     break;
   case 'customCommand':
     // Process custom commands and send each to tracker object with provided arguments
-    const commands = data.customCommandTable && data.customCommandTable.length ? data.customCommandTable : [];
-    commands.forEach(c => {
-      tracker(c.name + ':' + trackerName, c.args);
+    const commands =
+      data.customCommandTable && data.customCommandTable.length ? data.customCommandTable : [];
+    commands.forEach((c) => {
+      tracker(mkCommand(c.name), c.args);
     });
     break;
 }
 
 if (data.eventType !== 'customCommand') {
-  // Add tracker name to command
-  commandName = commandName + ':' + trackerName;
-
   // Add custom contexts
-  if (data.customContexts !== 'no' && getType(data.customContexts) === 'array') parameters.context = data.customContexts;
+  if (data.customContexts !== 'no' && getType(data.customContexts) === 'array')
+    parameters.context = data.customContexts;
 
   // Add true timestamp
-  if (data.trueTimestamp) parameters.timestamp = {type: 'ttm', value: data.trueTimestamp};
+  if (data.trueTimestamp)
+    parameters.timestamp = { type: 'ttm', value: data.trueTimestamp };
 
   // Execute the command
-  tracker(commandName, parameters);
+  tracker(mkCommand(commandName), parameters);
 }
 
-injectScript(libUrl, data.gtmOnSuccess, data.gtmOnFailure, 'splibrary');
+if (spLoadLib !== 'doNotLoad') {
+  injectScript(spLoadLib, data.gtmOnSuccess, data.gtmOnFailure, 'splibrary');
+} else {
+  data.gtmOnSuccess();
+}
 
 
 ___WEB_PERMISSIONS___
@@ -2388,42 +2516,90 @@ ___TESTS___
 
 scenarios:
 - name: Tracker configuration loaded from parameters, overrides variable
-  code: "mockData.trackerName = undefined;\nmockData.trackerConfigurationVariable\
-    \ = {appId: 'test', type: 'snowplow', platform: 'ios', trackerOptions: {trackerName:\
-    \ 'testName'}};\nmockData.overridingSettings = [{name: 'platform', value: 'web'}];\n\
-    mock('copyFromWindow', key => {\n  if (key === mockData.globalName) {\n    return\
-    \ function() {\n      if (arguments[0] === 'newTracker') {\n        assertThat(arguments[1],\
-    \ 'Tracker name not overridden').isEqualTo('testName');\n        assertThat(arguments[3],\
-    \ 'Variable config not overridden').isEqualTo({appId: 'test', type: 'snowplow',\
-    \ platform: 'web', trackerOptions: {trackerName: 'testName'}});\n      }  \n \
-    \   };\n  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
-    \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
+  code: |
+    mockData.trackerName = undefined;
+    mockData.trackerConfigurationVariable = {
+      appId: 'test',
+      type: 'snowplow',
+      platform: 'ios',
+      trackerOptions: { trackerName: 'testName' },
+    };
+    mockData.overridingSettings = [{ name: 'platform', value: 'web' }];
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return function () {
+          if (arguments[0] === 'newTracker') {
+            assertThat(arguments[1], 'Tracker name not overridden').isEqualTo(
+              'testName'
+            );
+            assertThat(arguments[3], 'Variable config not overridden').isEqualTo({
+              appId: 'test',
+              type: 'snowplow',
+              platform: 'web',
+              trackerOptions: { trackerName: 'testName' },
+            });
+          }
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+
+    // Verify that the tag finished successfully.
+    assertApi('gtmOnSuccess').wasCalled();
 - name: Custom command called with arguments
-  code: "mockData.eventType = 'customCommand';\nmockData.customCommandTable = [{name:\
-    \ 'commandName', args: 'commandValue'}];\n\nmock('copyFromWindow', key => {\n\
-    \  if (key === mockData.globalName) {\n    return (command, parameters) => {\n\
-    \      if (command === 'newTracker') return;\n      assertThat(command, 'Invalid\
-    \ command name').isEqualTo('commandName' + ':' + mockData.trackerName);\n    \
-    \  assertThat(parameters, 'Invalid parameter sent').isEqualTo('commandValue');\
-    \ \n    };\n  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
-    \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
+  code: |
+    mockData.eventType = 'customCommand';
+    mockData.customCommandTable = [{ name: 'commandName', args: 'commandValue' }];
+
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return (command, parameters) => {
+          if (command === 'newTracker') return;
+          assertThat(command, 'Invalid command name').isEqualTo(
+            'commandName' + ':' + mockData.trackerName
+          );
+          assertThat(parameters, 'Invalid parameter sent').isEqualTo(
+            'commandValue'
+          );
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+
+    // Verify that the tag finished successfully.
+    assertApi('gtmOnSuccess').wasCalled();
 - name: Context added to hit
-  code: |-
+  code: |
     mockData.eventType = 'trackPageView';
     mockData.pageViewPageTitle = 'test';
     mockData.pageViewPageContextFunction = () => {};
     mockData.customContexts = ['test'];
     mockData.trueTimestamp = 123;
 
-    mock('copyFromWindow', key => {
+    mock('copyFromWindow', (key) => {
       if (key === mockData.globalName) {
         return (command, parameters) => {
           if (command === 'newTracker') return;
-          assertThat(command, 'Invalid command name').isEqualTo(mockData.eventType + ':' + mockData.trackerName);
-          assertThat(parameters.title, 'Invalid title set').isEqualTo(mockData.pageViewPageTitle);
-          assertThat(parameters.context, 'Invalid context set').isEqualTo(mockData.customContexts);
-          assertThat(parameters.contextCallback, 'Invalid context callback set').isEqualTo(mockData.pageViewPageContextFunction);
-          assertThat(parameters.timestamp.value, 'Invalid timestamp set').isEqualTo(mockData.trueTimestamp);
+          assertThat(command, 'Invalid command name').isEqualTo(
+            mockData.eventType + ':' + mockData.trackerName
+          );
+          assertThat(parameters.title, 'Invalid title set').isEqualTo(
+            mockData.pageViewPageTitle
+          );
+          assertThat(parameters.context, 'Invalid context set').isEqualTo(
+            mockData.customContexts
+          );
+          assertThat(
+            parameters.contextCallback,
+            'Invalid context callback set'
+          ).isEqualTo(mockData.pageViewPageContextFunction);
+          assertThat(parameters.timestamp.value, 'Invalid timestamp set').isEqualTo(
+            mockData.trueTimestamp
+          );
         };
       }
     });
@@ -2434,7 +2610,7 @@ scenarios:
     // Verify that the tag finished successfully.
     assertApi('gtmOnSuccess').wasCalled();
 - name: Enhanced Ecommerce works with Use Data Layer
-  code: |-
+  code: |
     mockData.eventType = 'enhancedEcommerce';
     mockData.enhancedEcommerceUseDataLayer = true;
     let impression = false;
@@ -2443,24 +2619,36 @@ scenarios:
     mock('copyFromDataLayer', (key, version) => {
       if (key === 'ecommerce' && version === 1) {
         return {
-          impressions: [{
-            id: 'impression1'
-          }],
+          impressions: [
+            {
+              id: 'impression1',
+            },
+          ],
           promoView: {
-            promotions: [{
-              id: 'promo1'
-            }]
-          }
+            promotions: [
+              {
+                id: 'promo1',
+              },
+            ],
+          },
         };
       }
     });
 
-    mock('copyFromWindow', key => {
+    mock('copyFromWindow', (key) => {
       if (key === mockData.globalName) {
         return (command, parameters) => {
           if (command === 'newTracker') return;
-          if (command === 'addEnhancedEcommerceImpressionContext' && parameters.id === 'impression1') impression = true;
-          if (command === 'addEnhancedEcommercePromoContext' && parameters.id === 'promo1') promo = true;
+          if (
+            command === 'addEnhancedEcommerceImpressionContext:test' &&
+            parameters.id === 'impression1'
+          )
+            impression = true;
+          if (
+            command === 'addEnhancedEcommercePromoContext:test' &&
+            parameters.id === 'promo1'
+          )
+            promo = true;
         };
       }
     });
@@ -2469,32 +2657,92 @@ scenarios:
     runCode(mockData);
 
     // Verify that the tag finished successfully.
-    assertThat(impression, 'Enhanced Ecommerce failed - incorrect impression parsing').isEqualTo(true);
-    assertThat(promo, 'Enhanced Ecommerce failed - incorrect promo parsing').isEqualTo(true);
+    assertThat(
+      impression,
+      'Enhanced Ecommerce failed - incorrect impression parsing'
+    ).isEqualTo(true);
+    assertThat(
+      promo,
+      'Enhanced Ecommerce failed - incorrect promo parsing'
+    ).isEqualTo(true);
 
     assertApi('gtmOnSuccess').wasCalled();
 - name: Plugin loaded
-  code: "mockData.pluginsTable = [{url: 'https://www.url.com', config: 'somePlugin,PluginSome',\
-    \ additionalConfig: 'true,true,true'}];\n\nmock('copyFromWindow', key => {\n \
-    \ if (key === mockData.globalName) {\n    return (command, param1, param2, param3)\
-    \ => {\n      if (command !== 'addPlugin') return;\n      assertThat(command,\
-    \ 'Invalid command name').isEqualTo('addPlugin');\n      assertThat(param1, 'Invalid\
-    \ parameter for url').isEqualTo('https://www.url.com'); \n      assertThat(param2,\
-    \ 'Invalid parameter for config').isEqualTo(['somePlugin','PluginSome']);\n  \
-    \    assertThat(param3, 'Invalid parameter for additionalConfig').isEqualTo([true,true,true]);\
-    \      \n    };\n  }\n});\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
-    \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();"
-setup: "const log = require('logToConsole');\n\nconst mockData = {\n  trackerName:\
-  \ 'test',\n  selfHostedUrl: 'https://abcd.cloudfront.net/sp.js',\n  globalName:\
-  \ 'snowplow',\n  collectorEndpoint: 'test.domain',\n  trackerConfigurationVariable:\
-  \ 'select',\n  overridingSettings: []\n};\n\nlet success, failure;\nmock('injectScript',\
-  \ (url, onsuccess, onfailure) => {\n  success = onsuccess;\n  failure = onfailure;\n\
-  \  if (url === mockData.selfHostedUrl) {\n    onsuccess();\n  } else {\n    onfailure();\n\
-  \  }\n  return;\n});\n     "
+  code: |
+    mockData.pluginsTable = [
+      {
+        url: 'https://www.url.com',
+        config: 'somePlugin,PluginSome',
+        additionalConfig: 'true,true,true',
+      },
+    ];
+
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return (command, param1, param2, param3) => {
+          if (command !== 'addPlugin') return;
+          assertThat(command, 'Invalid command name').isEqualTo('addPlugin');
+          assertThat(param1, 'Invalid parameter for url').isEqualTo(
+            'https://www.url.com'
+          );
+          assertThat(param2, 'Invalid parameter for config').isEqualTo([
+            'somePlugin',
+            'PluginSome',
+          ]);
+          assertThat(param3, 'Invalid parameter for additionalConfig').isEqualTo([
+            true,
+            true,
+            true,
+          ]);
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+
+    // Verify that the tag finished successfully.
+    assertApi('gtmOnSuccess').wasCalled();
+- name: No load lib
+  code: |
+    mockData.overrideLibraryURL = false;
+    mockData.spLibrary = undefined;
+    mockData.version = undefined;
+    mockData.selfHostingUrl = undefined;
+    mockData.trackerConfigurationVariable = {
+      type: 'snowplow',
+      trackerOptions: { libUrl: 'doNotLoad' },
+    };
+
+    runCode(mockData);
+    assertApi('injectScript').wasNotCalled();
+setup: |-
+  const log = require('logToConsole');
+
+  const mockData = {
+    trackerName: 'test',
+    overrideLibraryURL: true,
+    spLibrary: 'selfHosted',
+    selfHostedUrl: 'https://abcd.cloudfront.net/sp.js',
+    globalName: 'snowplow',
+    collectorEndpoint: 'test.domain',
+    trackerConfigurationVariable: 'select',
+    overridingSettings: [],
+  };
+
+  let success, failure;
+  mock('injectScript', (url, onsuccess, onfailure) => {
+    success = onsuccess;
+    failure = onfailure;
+    if (url === mockData.selfHostedUrl) {
+      onsuccess();
+    } else {
+      onfailure();
+    }
+    return;
+  });
 
 
 ___NOTES___
 
 Created on 16/08/2019, 09:46:49
-
-
