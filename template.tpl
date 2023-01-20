@@ -1474,7 +1474,7 @@ ___TEMPLATE_PARAMETERS___
                     "errorMessage": "The sp.js library version number must be greater or equal to 3 (e.g. 3.1.5)."
                   }
                 ],
-                "valueHint": "3.5.0"
+                "valueHint": "3.13.0"
               }
             ],
             "enablingConditions": [
@@ -1569,7 +1569,7 @@ const templateStorage = require('templateStorage');
 
 // Constants
 const UNPKG =
-  'https://unpkg.com/browse/@snowplow/javascript-tracker@' +
+  'https://unpkg.com/@snowplow/javascript-tracker@' +
   data.version +
   '/dist/sp.js';
 const JSDELIVR =
@@ -2719,6 +2719,23 @@ scenarios:
 
     runCode(mockData);
     assertApi('injectScript').wasNotCalled();
+- name: Test unpkg CDN url
+  code: |
+    mockData.overrideLibraryURL = true;
+    mockData.spLibrary = 'unpkg';
+    mockData.version = '3.8.0';
+    mockData.selfHostingUrl = undefined;
+
+    let url = '';
+    mock('injectScript', function(injectUrl, x, y, z) {
+      url = injectUrl;
+    });
+
+    runCode(mockData);
+    assertApi('injectScript').wasCalled();
+
+    const expectedUnpkgUrl = 'https://unpkg.com/@snowplow/javascript-tracker@3.8.0/dist/sp.js';
+    assertThat(url).isStrictlyEqualTo(expectedUnpkgUrl);
 setup: |-
   const log = require('logToConsole');
 
