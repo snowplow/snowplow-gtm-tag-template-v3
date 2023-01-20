@@ -1207,18 +1207,24 @@ ___TEMPLATE_PARAMETERS___
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
       {
-        "type": "SELECT",
+        "type": "SIMPLE_TABLE",
         "name": "customContexts",
-        "displayName": "Add Custom Contexts",
-        "macrosInSelect": true,
-        "selectItems": [
+        "displayName": "Add Custom Context Entities",
+        "simpleTableColumns": [
           {
-            "value": "no",
-            "displayValue": "No"
+            "defaultValue": "",
+            "displayName": "Context Entities",
+            "name": "entitiesVariable",
+            "type": "SELECT",
+            "macrosInSelect": true,
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
           }
         ],
-        "simpleValueType": true,
-        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
+        "help": "Use this table to attach custom context entities to the Snowplow event. Each row can be set to a Google Tag Manager variable that returns an \u003cstrong\u003earray\u003c/strong\u003e of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
       },
       {
         "type": "TEXT",
@@ -2138,10 +2144,28 @@ switch (data.eventType) {
     break;
 }
 
+const mkCustomContexts = (tagConfig) => {
+  const zeroVal = [];
+  const configCtx = tagConfig.customContexts;
+  if (configCtx && configCtx.length > 0) {
+    return configCtx.reduce((acc, curr) => {
+      const ctx = curr.entitiesVariable;
+      if (getType(ctx) === 'array') {
+        return acc.concat(ctx);
+      }
+      // if not array, ignore
+      return acc;
+    }, zeroVal);
+  }
+  return zeroVal;
+};
+
 if (data.eventType !== 'customCommand') {
   // Add custom contexts
-  if (data.customContexts !== 'no' && getType(data.customContexts) === 'array')
-    parameters.context = data.customContexts;
+  const contextToAdd = mkCustomContexts(data);
+  if (contextToAdd.length > 0) {
+    parameters.context = contextToAdd;
+  }
 
   // Add true timestamp
   if (data.trueTimestamp)
@@ -2577,10 +2601,28 @@ scenarios:
     assertApi('gtmOnSuccess').wasCalled();
 - name: Context added to hit
   code: |
+    const userEntity = {
+      schema: 'iglu:com.google.tag-manager.server-side/user_data/jsonschema/1-0-0',
+      data: { email_address: 'foo@bar.io' },
+    };
+    const mobileEntity = {
+      schema: 'iglu:com.snowplowanalytics.snowplow/mobile_context/jsonschema/1-0-2',
+      data: {
+        osType: 'myOsType',
+        osVersion: 'myOsVersion',
+        deviceManufacturer: 'myDevMan',
+        deviceModel: 'myDevModel',
+      },
+    };
+
     mockData.eventType = 'trackPageView';
     mockData.pageViewPageTitle = 'test';
     mockData.pageViewPageContextFunction = () => {};
-    mockData.customContexts = ['test'];
+    mockData.customContexts = [
+      { entitiesVariable: [userEntity] },
+      { entitiesVariable: [mobileEntity] },
+      { entitiesVariable: 'ignore' },
+    ];
     mockData.trueTimestamp = 123;
 
     mock('copyFromWindow', (key) => {
@@ -2593,8 +2635,12 @@ scenarios:
           assertThat(parameters.title, 'Invalid title set').isEqualTo(
             mockData.pageViewPageTitle
           );
-          assertThat(parameters.context, 'Invalid context set').isEqualTo(
-            mockData.customContexts
+          assertThat(parameters.context, 'Invalid context set length').hasLength(2);
+          assertThat(parameters.context, 'Invalid context set').contains(
+            userEntity
+          );
+          assertThat(parameters.context, 'Invalid context set').contains(
+            mobileEntity
           );
           assertThat(
             parameters.contextCallback,
