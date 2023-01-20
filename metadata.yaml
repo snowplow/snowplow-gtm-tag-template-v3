@@ -2,6 +2,13 @@ homepage: "https://snowplow.io"
 documentation: "https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide"
 versions:
   # Latest version
+  - sha: ef8ce7c5290fb23cb54cd7ae2ed55a70d0644ad5
+    changeNotes: |2
+      Allow multiple entries for custom context entities (#15)
+      Update Copyright to 2023 (#18)
+      Fix unpkg CDN url (#17)
+      Disallow trailing slash in collector hostname (#16)
+  # Older versions
   - sha: 5f1c9752e2e15fb185c5bd8242809266816e9faa
     changeNotes: |2
       Switch to snowplow.io domain (#14)
@@ -10,7 +17,6 @@ versions:
       Fix unpkg library url (#9)
       Ensure all Snowplow methods are executed by specified tracker (#7)
       Format template with prettier (#8)
-  # Older versions
   - sha: 70af2b13dcea07e8b9c0682aa010827e4175ec8f
     changeNotes: |2
       Update Copyright to 2022 (#5)
