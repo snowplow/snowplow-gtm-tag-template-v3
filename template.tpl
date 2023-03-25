@@ -1187,13 +1187,24 @@ ___TEMPLATE_PARAMETERS___
             "defaultValue": "",
             "displayName": "Command Name",
             "name": "name",
-            "type": "TEXT"
+            "type": "TEXT",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
           },
           {
             "defaultValue": "",
             "displayName": "Command Argument",
             "name": "args",
-            "type": "TEXT"
+            "type": "TEXT",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY",
+                "errorMessage": "The value must not be empty. If your command accepts no arguments, please use a varable evaluating to undefined instead."
+              }
+            ]
           }
         ],
         "help": "Enter each custom command on its own row. In the column \u003cstrong\u003eCommand Name\u003c/strong\u003e type the name of the command (e.g. \u003cstrong\u003esetUserId\u003c/strong\u003e), and in the column \u003cstrong\u003eCommand Argument\u003c/strong\u003e type (or provide a variable reference to) the parameter of the command. The commands are executed in order from top to bottom."
