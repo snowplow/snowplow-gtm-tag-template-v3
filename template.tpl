@@ -1740,6 +1740,29 @@ plugins.forEach((plugin) => {
   );
 });
 
+/**
+ * Adds promoFieldObject context for each promotion in the hit
+ *
+ * @param {Object} eecObj - The ecommerce object
+ * @param {string} key - The ecommerce property to measure promotions
+ * @returns {undefined}
+ */
+const addPromoCtx = (eecObj, key) => {
+  // Assume eecObj[key] exists
+  const promotions = eecObj[key].promotions;
+  if (getType(promotions) === 'array') {
+    promotions.forEach((p) => {
+      tracker(mkCommand('addEnhancedEcommercePromoContext'), {
+        id: p.id,
+        name: p.name,
+        creative: p.creative,
+        position: p.position,
+        currency: eecObj.currencyCode,
+      });
+    });
+  }
+};
+
 // Helper for creating Enhanced Ecommerce contexts
 const parseEECObject = (obj) => {
   // Valid actions the script will look for in the dataLayer
@@ -1772,22 +1795,14 @@ const parseEECObject = (obj) => {
     });
     action = 'view';
   }
-  // Track promotion views for each promotion in the hit, as long as there isn't a promoClick in the object
-  if (
-    obj.promoView &&
-    !obj.promoClick &&
-    getType(obj.promoView.promotions) === 'array'
-  ) {
-    obj.promoView.promotions.forEach((p) => {
-      tracker(mkCommand('addEnhancedEcommercePromoContext'), {
-        id: p.id,
-        name: p.name,
-        creative: p.creative,
-        position: p.position,
-        currency: obj.currencyCode,
-      });
-    });
+  // According to enhanced ecommerce docs, measuring a promoClick action
+  // should be done in a separate hit, after the promoView.
+  if (obj.promoView && !obj.promoClick) {
+    addPromoCtx(obj, 'promoView');
     action = 'view';
+  }
+  if (obj.promoClick) {
+    addPromoCtx(obj, 'promoClick');
   }
   // Go through all the actions and stop at the first one that matches
   actions.some((a) => {
@@ -2793,6 +2808,158 @@ scenarios:
 
     const expectedUnpkgUrl = 'https://unpkg.com/@snowplow/javascript-tracker@3.8.0/dist/sp.js';
     assertThat(url).isStrictlyEqualTo(expectedUnpkgUrl);
+- name: Enhanced Ecommerce promoView
+  code: |
+    mockData.eventType = 'enhancedEcommerce';
+    mockData.enhancedEcommerceUseDataLayer = true;
+
+    mock('copyFromDataLayer', (key, version) => {
+      if (key === 'ecommerce' && version === 1) {
+        return {
+          currencyCode: 'FOO',
+          promoView: {
+            promotions: [
+              {
+                id: 'test_a_campaign',
+                name: 'Test A Campaign',
+                creative: 'Carousel',
+                position: 'Slide 1',
+              },
+              {
+                id: 'test_b_campaign',
+                name: 'Test B Campaign',
+                creative: 'Carousel',
+                position: 'Slide 2',
+              },
+            ],
+          },
+        };
+      }
+    });
+
+    const expectedEECCommands = [
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_a_campaign',
+          name: 'Test A Campaign',
+          creative: 'Carousel',
+          position: 'Slide 1',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_b_campaign',
+          name: 'Test B Campaign',
+          creative: 'Carousel',
+          position: 'Slide 2',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'trackEnhancedEcommerceAction:' + mockData.trackerName,
+        params: {
+          action: 'view',
+        },
+      },
+    ];
+
+    const actualCommands = [];
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return (command, parameters) => {
+          if (command !== 'newTracker') {
+            actualCommands.push({
+              cmd: command,
+              params: parameters,
+            });
+          }
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+    assertThat(actualCommands).isEqualTo(expectedEECCommands);
+    assertApi('gtmOnSuccess').wasCalled();
+- name: Enhanced Ecommerce promoClick
+  code: |
+    mockData.eventType = 'enhancedEcommerce';
+    mockData.enhancedEcommerceUseDataLayer = true;
+
+    mock('copyFromDataLayer', (key, version) => {
+      if (key === 'ecommerce' && version === 1) {
+        return {
+          currencyCode: 'FOO',
+          promoClick: {
+            promotions: [
+              {
+                id: 'test_a_campaign',
+                name: 'Test A Campaign',
+                creative: 'Carousel',
+                position: 'Slide 1',
+              },
+              {
+                id: 'test_b_campaign',
+                name: 'Test B Campaign',
+                creative: 'Carousel',
+                position: 'Slide 2',
+              },
+            ],
+          },
+        };
+      }
+    });
+
+    const expectedEECCommands = [
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_a_campaign',
+          name: 'Test A Campaign',
+          creative: 'Carousel',
+          position: 'Slide 1',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_b_campaign',
+          name: 'Test B Campaign',
+          creative: 'Carousel',
+          position: 'Slide 2',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'trackEnhancedEcommerceAction:' + mockData.trackerName,
+        params: {
+          action: 'promo_click',
+        },
+      },
+    ];
+
+    const actualCommands = [];
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return (command, parameters) => {
+          if (command !== 'newTracker') {
+            actualCommands.push({
+              cmd: command,
+              params: parameters,
+            });
+          }
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+    assertThat(actualCommands).isEqualTo(expectedEECCommands);
+    assertApi('gtmOnSuccess').wasCalled();
 setup: |-
   const log = require('logToConsole');
 
