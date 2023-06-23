@@ -1187,13 +1187,24 @@ ___TEMPLATE_PARAMETERS___
             "defaultValue": "",
             "displayName": "Command Name",
             "name": "name",
-            "type": "TEXT"
+            "type": "TEXT",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
           },
           {
             "defaultValue": "",
             "displayName": "Command Argument",
             "name": "args",
-            "type": "TEXT"
+            "type": "TEXT",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY",
+                "errorMessage": "The value must not be empty. If your command accepts no arguments, please use a varable evaluating to undefined instead."
+              }
+            ]
           }
         ],
         "help": "Enter each custom command on its own row. In the column \u003cstrong\u003eCommand Name\u003c/strong\u003e type the name of the command (e.g. \u003cstrong\u003esetUserId\u003c/strong\u003e), and in the column \u003cstrong\u003eCommand Argument\u003c/strong\u003e type (or provide a variable reference to) the parameter of the command. The commands are executed in order from top to bottom."
@@ -1207,18 +1218,24 @@ ___TEMPLATE_PARAMETERS___
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
       {
-        "type": "SELECT",
+        "type": "SIMPLE_TABLE",
         "name": "customContexts",
-        "displayName": "Add Custom Contexts",
-        "macrosInSelect": true,
-        "selectItems": [
+        "displayName": "Add Custom Context Entities",
+        "simpleTableColumns": [
           {
-            "value": "no",
-            "displayValue": "No"
+            "defaultValue": "",
+            "displayName": "Context Entities",
+            "name": "entitiesVariable",
+            "type": "SELECT",
+            "macrosInSelect": true,
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
           }
         ],
-        "simpleValueType": true,
-        "help": "Set to a Google Tag Manager variable that returns an array of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
+        "help": "Use this table to attach custom context entities to the Snowplow event. Each row can be set to a Google Tag Manager variable that returns an \u003cstrong\u003earray\u003c/strong\u003e of custom contexts to add to the event hit. \u003ca href\u003d\"https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/tracking-events/#custom-context\"\u003eRead more\u003c/a\u003e."
       },
       {
         "type": "TEXT",
@@ -1356,10 +1373,13 @@ ___TEMPLATE_PARAMETERS___
             "valueValidators": [
               {
                 "args": [
-                  "^\\S+$"
+                  "^\\S+[^/]$"
                 ],
-                "errorMessage": "You must provide a valid hostname.",
+                "errorMessage": "You must provide a valid hostname. Please check that no whitespace or trailing slashes are included.",
                 "type": "REGEX"
+              },
+              {
+                "type": "NON_EMPTY"
               }
             ],
             "simpleValueType": true,
@@ -1471,7 +1491,7 @@ ___TEMPLATE_PARAMETERS___
                     "errorMessage": "The sp.js library version number must be greater or equal to 3 (e.g. 3.1.5)."
                   }
                 ],
-                "valueHint": "3.5.0"
+                "valueHint": "3.13.0"
               }
             ],
             "enablingConditions": [
@@ -1566,7 +1586,7 @@ const templateStorage = require('templateStorage');
 
 // Constants
 const UNPKG =
-  'https://unpkg.com/browse/@snowplow/javascript-tracker@' +
+  'https://unpkg.com/@snowplow/javascript-tracker@' +
   data.version +
   '/dist/sp.js';
 const JSDELIVR =
@@ -1720,6 +1740,28 @@ plugins.forEach((plugin) => {
   );
 });
 
+/**
+ * Adds promoFieldObject context for each promotion in the hit
+ *
+ * @param {Object} eecObj - The ecommerce object
+ * @param {string} key - The ecommerce property to measure promotions
+ */
+const addPromoCtx = (eecObj, key) => {
+  // Assume eecObj[key] exists
+  const promotions = eecObj[key].promotions;
+  if (getType(promotions) === 'array') {
+    promotions.forEach((p) => {
+      tracker(mkCommand('addEnhancedEcommercePromoContext'), {
+        id: p.id,
+        name: p.name,
+        creative: p.creative,
+        position: p.position,
+        currency: eecObj.currencyCode,
+      });
+    });
+  }
+};
+
 // Helper for creating Enhanced Ecommerce contexts
 const parseEECObject = (obj) => {
   // Valid actions the script will look for in the dataLayer
@@ -1752,22 +1794,14 @@ const parseEECObject = (obj) => {
     });
     action = 'view';
   }
-  // Track promotion views for each promotion in the hit, as long as there isn't a promoClick in the object
-  if (
-    obj.promoView &&
-    !obj.promoClick &&
-    getType(obj.promoView.promotions) === 'array'
-  ) {
-    obj.promoView.promotions.forEach((p) => {
-      tracker(mkCommand('addEnhancedEcommercePromoContext'), {
-        id: p.id,
-        name: p.name,
-        creative: p.creative,
-        position: p.position,
-        currency: obj.currencyCode,
-      });
-    });
+  // According to enhanced ecommerce docs, measuring a promoClick action
+  // should be done in a separate hit, after the promoView.
+  if (obj.promoView && !obj.promoClick) {
+    addPromoCtx(obj, 'promoView');
     action = 'view';
+  }
+  if (obj.promoClick) {
+    addPromoCtx(obj, 'promoClick');
   }
   // Go through all the actions and stop at the first one that matches
   actions.some((a) => {
@@ -2135,10 +2169,28 @@ switch (data.eventType) {
     break;
 }
 
+const mkCustomContexts = (tagConfig) => {
+  const zeroVal = [];
+  const configCtx = tagConfig.customContexts;
+  if (configCtx && configCtx.length > 0) {
+    return configCtx.reduce((acc, curr) => {
+      const ctx = curr.entitiesVariable;
+      if (getType(ctx) === 'array') {
+        return acc.concat(ctx);
+      }
+      // if not array, ignore
+      return acc;
+    }, zeroVal);
+  }
+  return zeroVal;
+};
+
 if (data.eventType !== 'customCommand') {
   // Add custom contexts
-  if (data.customContexts !== 'no' && getType(data.customContexts) === 'array')
-    parameters.context = data.customContexts;
+  const contextToAdd = mkCustomContexts(data);
+  if (contextToAdd.length > 0) {
+    parameters.context = contextToAdd;
+  }
 
   // Add true timestamp
   if (data.trueTimestamp)
@@ -2574,10 +2626,28 @@ scenarios:
     assertApi('gtmOnSuccess').wasCalled();
 - name: Context added to hit
   code: |
+    const userEntity = {
+      schema: 'iglu:com.google.tag-manager.server-side/user_data/jsonschema/1-0-0',
+      data: { email_address: 'foo@bar.io' },
+    };
+    const mobileEntity = {
+      schema: 'iglu:com.snowplowanalytics.snowplow/mobile_context/jsonschema/1-0-2',
+      data: {
+        osType: 'myOsType',
+        osVersion: 'myOsVersion',
+        deviceManufacturer: 'myDevMan',
+        deviceModel: 'myDevModel',
+      },
+    };
+
     mockData.eventType = 'trackPageView';
     mockData.pageViewPageTitle = 'test';
     mockData.pageViewPageContextFunction = () => {};
-    mockData.customContexts = ['test'];
+    mockData.customContexts = [
+      { entitiesVariable: [userEntity] },
+      { entitiesVariable: [mobileEntity] },
+      { entitiesVariable: 'ignore' },
+    ];
     mockData.trueTimestamp = 123;
 
     mock('copyFromWindow', (key) => {
@@ -2590,8 +2660,12 @@ scenarios:
           assertThat(parameters.title, 'Invalid title set').isEqualTo(
             mockData.pageViewPageTitle
           );
-          assertThat(parameters.context, 'Invalid context set').isEqualTo(
-            mockData.customContexts
+          assertThat(parameters.context, 'Invalid context set length').hasLength(2);
+          assertThat(parameters.context, 'Invalid context set').contains(
+            userEntity
+          );
+          assertThat(parameters.context, 'Invalid context set').contains(
+            mobileEntity
           );
           assertThat(
             parameters.contextCallback,
@@ -2716,6 +2790,175 @@ scenarios:
 
     runCode(mockData);
     assertApi('injectScript').wasNotCalled();
+- name: Test unpkg CDN url
+  code: |
+    mockData.overrideLibraryURL = true;
+    mockData.spLibrary = 'unpkg';
+    mockData.version = '3.8.0';
+    mockData.selfHostingUrl = undefined;
+
+    let url = '';
+    mock('injectScript', function(injectUrl, x, y, z) {
+      url = injectUrl;
+    });
+
+    runCode(mockData);
+    assertApi('injectScript').wasCalled();
+
+    const expectedUnpkgUrl = 'https://unpkg.com/@snowplow/javascript-tracker@3.8.0/dist/sp.js';
+    assertThat(url).isStrictlyEqualTo(expectedUnpkgUrl);
+- name: Enhanced Ecommerce promoView
+  code: |
+    mockData.eventType = 'enhancedEcommerce';
+    mockData.enhancedEcommerceUseDataLayer = true;
+
+    mock('copyFromDataLayer', (key, version) => {
+      if (key === 'ecommerce' && version === 1) {
+        return {
+          currencyCode: 'FOO',
+          promoView: {
+            promotions: [
+              {
+                id: 'test_a_campaign',
+                name: 'Test A Campaign',
+                creative: 'Carousel',
+                position: 'Slide 1',
+              },
+              {
+                id: 'test_b_campaign',
+                name: 'Test B Campaign',
+                creative: 'Carousel',
+                position: 'Slide 2',
+              },
+            ],
+          },
+        };
+      }
+    });
+
+    const expectedEECCommands = [
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_a_campaign',
+          name: 'Test A Campaign',
+          creative: 'Carousel',
+          position: 'Slide 1',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_b_campaign',
+          name: 'Test B Campaign',
+          creative: 'Carousel',
+          position: 'Slide 2',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'trackEnhancedEcommerceAction:' + mockData.trackerName,
+        params: {
+          action: 'view',
+        },
+      },
+    ];
+
+    const actualCommands = [];
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return (command, parameters) => {
+          if (command !== 'newTracker') {
+            actualCommands.push({
+              cmd: command,
+              params: parameters,
+            });
+          }
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+    assertThat(actualCommands).isEqualTo(expectedEECCommands);
+    assertApi('gtmOnSuccess').wasCalled();
+- name: Enhanced Ecommerce promoClick
+  code: |
+    mockData.eventType = 'enhancedEcommerce';
+    mockData.enhancedEcommerceUseDataLayer = true;
+
+    mock('copyFromDataLayer', (key, version) => {
+      if (key === 'ecommerce' && version === 1) {
+        return {
+          currencyCode: 'FOO',
+          promoClick: {
+            promotions: [
+              {
+                id: 'test_a_campaign',
+                name: 'Test A Campaign',
+                creative: 'Carousel',
+                position: 'Slide 1',
+              },
+              {
+                id: 'test_b_campaign',
+                name: 'Test B Campaign',
+                creative: 'Carousel',
+                position: 'Slide 2',
+              },
+            ],
+          },
+        };
+      }
+    });
+
+    const expectedEECCommands = [
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_a_campaign',
+          name: 'Test A Campaign',
+          creative: 'Carousel',
+          position: 'Slide 1',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'addEnhancedEcommercePromoContext:' + mockData.trackerName,
+        params: {
+          id: 'test_b_campaign',
+          name: 'Test B Campaign',
+          creative: 'Carousel',
+          position: 'Slide 2',
+          currency: 'FOO',
+        },
+      },
+      {
+        cmd: 'trackEnhancedEcommerceAction:' + mockData.trackerName,
+        params: {
+          action: 'promo_click',
+        },
+      },
+    ];
+
+    const actualCommands = [];
+    mock('copyFromWindow', (key) => {
+      if (key === mockData.globalName) {
+        return (command, parameters) => {
+          if (command !== 'newTracker') {
+            actualCommands.push({
+              cmd: command,
+              params: parameters,
+            });
+          }
+        };
+      }
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+    assertThat(actualCommands).isEqualTo(expectedEECCommands);
+    assertApi('gtmOnSuccess').wasCalled();
 setup: |-
   const log = require('logToConsole');
 
