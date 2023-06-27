@@ -964,7 +964,7 @@ ___TEMPLATE_PARAMETERS___
             "name": "linkTrackingAllowlist",
             "displayName": "Allowlist Classes",
             "simpleValueType": true,
-            "help": "Add a comma-separated list (or variable that returns an array) of HTML classes. If any of these classes is on the HTML element when a link click event is triggered, the event will not be tracked. NOTE! This field overrides the denylist.",
+            "help": "Add a comma-separated list (or variable that returns an array) of HTML classes. If any of these classes is not on the HTML element when a link click event is triggered, the event will not be tracked. NOTE! This option overrides the Denylist Classes below.",
             "valueHint": "class1,class2,class3"
           },
           {
@@ -973,7 +973,7 @@ ___TEMPLATE_PARAMETERS___
             "displayName": "Denylist Classes",
             "simpleValueType": true,
             "valueHint": "class1,class2,class3",
-            "help": "Add a comma-separated list of HTML classes (or variable that returns an array) . If the clicked link element has any of these classes, the link click event will be tracked. All other elements will be ignored. NOTE! Allowlist overrides this field."
+            "help": "Add a comma-separated list (or variable that returns an array) of HTML classes. If any of these classes is on the HTML element when a link click event is triggered, the event will not be tracked. NOTE! This option has no effect if Allowlist Classes is specified.",
           },
           {
             "type": "CHECKBOX",
