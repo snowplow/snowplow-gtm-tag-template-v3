@@ -2014,7 +2014,7 @@ switch (data.eventType) {
           data.linkTrackingAllowlist || data.linkTrackingDenylist;
         // Convert comma-separated string to an array
         filterValue =
-          filterValue && getType(filterValue) === 'string' ? filterValue.split(',').map((f) => f.trim()) : null;
+          filterValue && getType(filterValue) === 'string' ? filterValue.split(',').map((f) => f.trim()) : filterValue;
         if (filterValue)
           filter[data.linkTrackingAllowlist ? 'allowlist' : 'denylist'] =
             filterValue;
