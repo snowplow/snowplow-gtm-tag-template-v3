@@ -2022,11 +2022,9 @@ switch (data.eventType) {
 
       commandName = data.linkTrackingType;
       parameters = {
-        configuration: {
-          options: filter,
-          pseudoClicks: !!data.linkTrackingPseudoClicks,
-          trackContent: !!data.linkTrackingInnerHTML,
-        },
+        options: filter,
+        pseudoClicks: !!data.linkTrackingPseudoClicks,
+        trackContent: !!data.linkTrackingInnerHTML,
       };
     } else {
       const params =
