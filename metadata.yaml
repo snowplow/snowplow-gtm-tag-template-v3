@@ -2,6 +2,9 @@ homepage: "https://snowplow.io"
 documentation: "https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide"
 versions:
   # Latest version
+  - sha: 6c1dc42ecb0ab9df763519f95782bf62215f8342
+    changeNotes: Fix handling of configuration for enableLinkClickTracking
+  # Older versions
   - sha: ef76ab0b4dd0657a122b2fb57c55ee41b9928bc1
     changeNotes: |2
       Fix missing promoFieldObject context on promoClick events (#23)
@@ -10,7 +13,6 @@ versions:
       Update Copyright to 2023 (#18)
       Fix unpkg CDN url (#17)
       Disallow trailing slash in collector hostname (#16)
-  # Older versions
   - sha: 5f1c9752e2e15fb185c5bd8242809266816e9faa
     changeNotes: |2
       Switch to snowplow.io domain (#14)
