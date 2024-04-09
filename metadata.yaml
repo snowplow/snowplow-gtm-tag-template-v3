@@ -2,9 +2,11 @@ homepage: "https://snowplow.io"
 documentation: "https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/google-tag-manager-custom-template/template-for-javascript-tracker-v3/tag-template-guide"
 versions:
   # Latest version
+  - sha: 4126d89e0d5bcada7c8e1165faed3ec1bc5d6c1a
+    changeNotes: Fix missing paramsObj on trackError (#28)
+  # Older versions
   - sha: 6c1dc42ecb0ab9df763519f95782bf62215f8342
     changeNotes: Fix handling of configuration for enableLinkClickTracking
-  # Older versions
   - sha: ef76ab0b4dd0657a122b2fb57c55ee41b9928bc1
     changeNotes: |2
       Fix missing promoFieldObject context on promoClick events (#23)
