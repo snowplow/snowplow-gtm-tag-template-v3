@@ -24,6 +24,8 @@ To **import** the template into Google Tag Manager:
 
 Make the changes you wish. Make sure the unit tests pass (in the **Tests** tab of the editor). Update the tests if necessary.
 
+> **NOTE:**  You must also agree to the `Community Template Gallery Terms of Service` on the info tab before exporting to make the sure the necesary licensing is in the template.
+
 Once you're done, follow these steps:
 
 1. **Save** the template in the template editor.
