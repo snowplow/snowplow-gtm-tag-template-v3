@@ -1616,9 +1616,9 @@ const getSp = () => {
   // Can't use createArgumentsQueue here since the Snowplow tracker library
   // does not work with GTM's wrapper
   setInWindow(GLOBALNAME, function () {
-    callInWindow('snowplow.q.push', arguments);
+    callInWindow(GLOBALNAME + '.q.push', arguments);
   });
-  createQueue('snowplow.q');
+  createQueue(GLOBALNAME + '.q');
   return copyFromWindow(GLOBALNAME);
 };
 const tracker = getSp();
