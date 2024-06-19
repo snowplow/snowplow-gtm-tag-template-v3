@@ -1595,7 +1595,7 @@ const JSDELIVR =
   '/dist/sp.min.js';
 const SNOWPLOW_TRACKER_LIST = 'snowplow_tracker_list';
 const ERROR_LOG_PREFIX = '[ERROR GTM / Snowplow v3] ';
-const GLOBALNAME = 'snowplow';
+const GLOBALNAME = 'snowplow'; // Note: you will need to update the 'Access global variables' template permission to reflect any changes
 
 // Create a list of initialized trackers
 const trackerList = templateStorage.getItem(SNOWPLOW_TRACKER_LIST) || [];
