@@ -1595,7 +1595,8 @@ const JSDELIVR =
   '/dist/sp.min.js';
 const SNOWPLOW_TRACKER_LIST = 'snowplow_tracker_list';
 const ERROR_LOG_PREFIX = '[ERROR GTM / Snowplow v3] ';
-const GLOBALNAME = 'snowplow';
+const GLOBALNAME = 'snowplow'; // Note: you will need to update the 'Access global variables' template permission to reflect any changes
+const NAMESPACENAME = 'GlobalSnowplowNamespace';
 
 // Create a list of initialized trackers
 const trackerList = templateStorage.getItem(SNOWPLOW_TRACKER_LIST) || [];
@@ -1611,14 +1612,14 @@ const getSp = () => {
     return snowplow;
   }
 
-  const globalNamespace = createQueue('GlobalSnowplowNamespace');
+  const globalNamespace = createQueue(NAMESPACENAME);
   globalNamespace(GLOBALNAME);
   // Can't use createArgumentsQueue here since the Snowplow tracker library
   // does not work with GTM's wrapper
   setInWindow(GLOBALNAME, function () {
-    callInWindow('snowplow.q.push', arguments);
+    callInWindow(GLOBALNAME + '.q.push', arguments);
   });
-  createQueue('snowplow.q');
+  createQueue(GLOBALNAME + '.q');
   return copyFromWindow(GLOBALNAME);
 };
 const tracker = getSp();
